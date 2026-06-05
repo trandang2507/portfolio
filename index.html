@@ -40,7 +40,8 @@
         radial-gradient(circle at 18% 0%, rgba(178, 34, 52, .24), transparent 34%),
         radial-gradient(circle at 86% 22%, rgba(107, 15, 26, .30), transparent 32%),
         radial-gradient(circle at 52% 78%, rgba(139, 30, 45, .16), transparent 36%),
-        linear-gradient(180deg, #120306 0%, #1b050a 42%, #0F1115 100%);
+        linear-gradient(135deg, #160408 0%, #1b050a 52%, #160408 100%);
+      background-attachment: fixed;
       color: var(--text);
       overflow-x: hidden;
       position: relative;
@@ -314,8 +315,10 @@
       font-family: var(--font-heading);
       font-size: clamp(4rem, 8vw, 7.8rem);
       font-weight: 950;
-      line-height: .91;
+      line-height: 1.08;
       letter-spacing: -.08em;
+      overflow: visible;
+      padding-bottom: .1em;
     }
 
     .intro-title span {
@@ -324,6 +327,9 @@
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
+      line-height: 1.12;
+      overflow: visible;
+      padding-bottom: .1em;
       text-shadow: 0 0 58px rgba(178, 34, 52, .34);
     }
 
@@ -917,8 +923,12 @@
       line-height: 1.82;
     }
 
-    .detail-section ul { padding-left: 22px; }
+    .detail-section ul,
+    .detail-section ol { padding-left: 22px; }
     .detail-section li { margin-bottom: 8px; }
+    .detail-section li > strong { color: var(--cream); }
+    .detail-section li > p,
+    .detail-section li > ul { margin-top: 8px; }
 
     .info-box {
       border-radius: 18px;
@@ -927,20 +937,506 @@
       line-height: 1.78;
     }
 
-    .info-box.wine-box {
-      background: linear-gradient(145deg, rgba(122,31,43,.22), rgba(21,25,34,.76));
-      border-color: rgba(217, 165, 165, .18);
+    .result-box {
+      display: grid;
+      gap: 22px;
+      border-radius: 22px;
+      padding: clamp(20px, 3vw, 28px);
+      background:
+        radial-gradient(circle at 12% 0%, rgba(217, 165, 165, .10), transparent 36%),
+        linear-gradient(145deg, rgba(255, 255, 255, .04), rgba(21, 25, 34, .58));
+      border: 1px solid rgba(217, 165, 165, .14);
+      color: var(--text-soft);
+      line-height: 1.78;
+      box-shadow: 0 24px 70px rgba(0, 0, 0, .22);
     }
 
-    .eval-stars {
-      display: flex;
-      gap: 5px;
-      margin-bottom: 12px;
+    .result-box p { margin: 0; }
+
+    .result-highlight {
+      display: grid;
+      grid-template-columns: 42px minmax(0, 1fr);
+      align-items: center;
+      gap: 14px;
+      padding: 16px 18px;
+      border-radius: 18px;
+      background: linear-gradient(135deg, rgba(217, 165, 165, .13), rgba(122, 31, 43, .11));
+      border: 1px solid rgba(217, 165, 165, .22);
+      box-shadow: 0 16px 42px rgba(178, 34, 52, .11);
     }
 
-    .eval-stars span {
+    .result-highlight-icon {
+      display: inline-grid;
+      place-items: center;
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      background: rgba(245, 235, 221, .10);
+      color: var(--cream);
+      font-size: 1.16rem;
+      box-shadow: inset 0 0 0 1px rgba(245, 235, 221, .12);
+    }
+
+    .result-highlight strong {
+      color: var(--cream);
+      font-weight: 850;
+      line-height: 1.65;
+    }
+
+    .result-case-grid {
+      display: grid;
+      grid-template-columns: minmax(300px, .92fr) minmax(0, 1.08fr);
+      gap: 22px;
+      align-items: stretch;
+    }
+
+    .result-figure {
+      display: grid;
+      gap: 12px;
+      margin: 0;
+      height: 100%;
+      padding: clamp(18px, 3vw, 24px);
+      border-radius: 22px;
+      background: rgba(7, 9, 12, .30);
+      border: 1px solid rgba(217, 165, 165, .13);
+      box-shadow: inset 0 0 0 1px rgba(245, 235, 221, .03);
+    }
+
+    .result-figure img {
+      display: block;
+      width: min(100%, 430px);
+      margin: 0 auto;
+      border-radius: 18px;
+      border: 1px solid rgba(217, 165, 165, .16);
+      background: rgba(255, 255, 255, .88);
+      box-shadow: 0 18px 48px rgba(0, 0, 0, .26);
+    }
+
+    .result-figure figcaption {
+      color: var(--cream);
+      font-size: .92rem;
+      font-weight: 850;
+      text-align: center;
+      letter-spacing: .01em;
+    }
+
+    .result-folder-panel {
+      display: grid;
+      grid-template-rows: auto minmax(0, 1fr);
+      align-content: start;
+      gap: 16px;
+      padding: clamp(18px, 3vw, 24px);
+      border-radius: 22px;
+      background: rgba(255, 255, 255, .035);
+      border: 1px solid rgba(217, 165, 165, .12);
+    }
+
+    .result-subtitle {
       color: var(--rose-gold);
+      font-size: .76rem;
+      font-weight: 950;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+
+    .folder-tree {
+      display: grid;
+      gap: 0;
+    }
+
+    .folder-tree-children {
+      display: grid;
+      gap: 10px;
+      margin-left: 27px;
+      padding-left: 20px;
+      border-left: 1px solid rgba(217, 165, 165, .24);
+    }
+
+    .folder-tree-node {
+      position: relative;
+      display: grid;
+      gap: 12px;
+    }
+
+    .folder-tree-row {
+      position: relative;
+      display: grid;
+      grid-template-columns: 30px minmax(0, 1fr);
+      gap: 11px;
+      align-items: center;
+      padding: 10px 12px;
+      border-radius: 15px;
+      background: rgba(245, 235, 221, .045);
+      border: 1px solid rgba(217, 165, 165, .09);
+      transition: transform .25s ease, border-color .25s ease, background .25s ease;
+    }
+
+    .folder-tree-children .folder-tree-row::before {
+      content: '';
+      position: absolute;
+      left: -21px;
+      top: 50%;
+      width: 21px;
+      border-top: 1px solid rgba(217, 165, 165, .24);
+    }
+
+    .tree-parent > .folder-tree-row::after {
+      content: '';
+      position: absolute;
+      left: 27px;
+      top: 100%;
+      height: 12px;
+      border-left: 1px solid rgba(217, 165, 165, .24);
+    }
+
+    .folder-tree-row:hover {
+      transform: translateX(3px);
+      border-color: rgba(217, 165, 165, .26);
+      background: rgba(217, 165, 165, .075);
+    }
+
+    .folder-icon {
+      color: #F4C84A;
+      font-size: 1.14rem;
+      line-height: 1;
+      filter: drop-shadow(0 0 10px rgba(244, 200, 74, .18));
+    }
+
+    .folder-text strong {
+      display: block;
+      color: var(--cream);
+      font-size: .96rem;
+      line-height: 1.35;
+    }
+
+    .folder-text span {
+      display: block;
+      color: var(--text-soft);
+      font-size: .84rem;
+      line-height: 1.45;
+    }
+
+    .result-checklist {
+      display: grid;
+      gap: 10px;
+      padding: clamp(18px, 3vw, 24px);
+      border-radius: 22px;
+      background: rgba(7, 9, 12, .24);
+      border: 1px solid rgba(217, 165, 165, .12);
+    }
+
+    .check-row {
+      display: grid;
+      grid-template-columns: 28px minmax(0, 1fr);
+      gap: 12px;
+      align-items: start;
+      padding: 12px 0;
+      border-top: 1px solid rgba(217, 165, 165, .10);
+      color: var(--text-soft);
+      line-height: 1.65;
+    }
+
+    .check-row:first-of-type { border-top: 0; }
+
+    .check-icon {
+      display: inline-grid;
+      place-items: center;
+      width: 28px;
+      height: 28px;
+      border-radius: 999px;
+      background: rgba(217, 165, 165, .12);
+      color: var(--rose-gold);
+      font-size: .8rem;
+      font-weight: 950;
+      box-shadow: 0 0 24px rgba(217, 165, 165, .10);
+    }
+
+    .code-tag {
+      display: inline-flex;
+      align-items: center;
+      padding: 2px 7px;
+      border-radius: 8px;
+      background: rgba(245, 235, 221, .08);
+      border: 1px solid rgba(217, 165, 165, .14);
+      color: var(--cream);
+      font-family: Consolas, "Courier New", monospace;
+      font-size: .88em;
+      white-space: nowrap;
+    }
+
+    .result-table-wrap {
+      overflow-x: auto;
+      border-radius: 18px;
+      border: 1px solid rgba(217, 165, 165, .12);
+      background: rgba(7, 9, 12, .24);
+    }
+
+    .result-table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 520px;
+      color: var(--text-soft);
+      font-size: .92rem;
+    }
+
+    .result-table th,
+    .result-table td {
+      padding: 12px 14px;
+      border-bottom: 1px solid rgba(217, 165, 165, .10);
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .result-table th {
+      color: var(--cream);
+      background: rgba(217, 165, 165, .08);
+      font-weight: 900;
+    }
+
+    .result-table tr:last-child td { border-bottom: 0; }
+
+    .result-note {
+      padding: 18px 20px;
+      border-radius: 18px;
+      background: rgba(217, 165, 165, .07);
+      border: 1px solid rgba(217, 165, 165, .13);
+    }
+
+    .result-note p + p { margin-top: 10px; }
+
+    .evidence-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .evidence-grid-single {
+      grid-template-columns: minmax(0, 1fr);
+    }
+
+    .evidence-card {
+      display: grid;
+      grid-template-rows: minmax(0, 1fr) auto;
+      gap: 12px;
+      margin: 0;
+      padding: 14px;
+      border-radius: 22px;
+      background:
+        radial-gradient(circle at 12% 0%, rgba(217, 165, 165, .08), transparent 34%),
+        rgba(7, 9, 12, .28);
+      border: 1px solid rgba(217, 165, 165, .14);
+      box-shadow: 0 18px 52px rgba(0, 0, 0, .22);
+      overflow: hidden;
+      transition: transform .3s ease, border-color .3s ease, box-shadow .3s ease;
+    }
+
+    .evidence-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(217, 165, 165, .30);
+      box-shadow: 0 28px 72px rgba(178, 34, 52, .16), 0 24px 70px rgba(0, 0, 0, .28);
+    }
+
+    .evidence-frame {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 250px;
+      border-radius: 18px;
+      background: rgba(15, 17, 21, .82);
+      border: 1px solid rgba(245, 235, 221, .08);
+      overflow: hidden;
+    }
+
+    .evidence-frame img {
+      display: block;
+      width: 100%;
+      height: 250px;
+      object-fit: contain;
+      border-radius: 14px;
+      transition: transform .35s ease;
+    }
+
+    .evidence-card:hover img { transform: scale(1.025); }
+
+    .evidence-card figcaption {
+      color: var(--cream);
+      font-weight: 900;
+      text-align: center;
+      letter-spacing: .01em;
+    }
+
+    .evidence-grid-single .evidence-frame {
+      min-height: auto;
+    }
+
+    .evidence-grid-single .evidence-frame img {
+      height: auto;
+      max-height: none;
+    }
+
+    .check-row strong {
+      display: block;
+      margin-bottom: 4px;
+      color: var(--cream);
+      font-weight: 900;
+    }
+
+    .principles-block {
+      padding: clamp(22px, 3vw, 30px);
+      border-radius: 22px;
+      background: rgba(7, 9, 12, .24);
+      border: 1px solid rgba(217, 165, 165, .12);
+    }
+
+    .principles-title {
+      margin-bottom: 22px;
+      color: var(--cream);
+      font-family: var(--font-heading);
+      font-size: clamp(1.35rem, 3vw, 2rem);
+      line-height: 1.2;
+      letter-spacing: -.025em;
+    }
+
+    .principles-list {
+      display: grid;
+      gap: 22px;
+      counter-reset: principle;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .principles-list li {
+      position: relative;
+      counter-increment: principle;
+      padding-left: 42px;
+      color: var(--text-soft);
+      line-height: 1.78;
+    }
+
+    .principles-list li::before {
+      content: counter(principle) ".";
+      position: absolute;
+      left: 0;
+      top: -2px;
+      color: var(--cream);
+      font-family: var(--font-heading);
+      font-size: 1.25rem;
+      font-weight: 900;
+    }
+
+    .principles-list strong {
+      display: block;
+      margin-bottom: 4px;
+      color: var(--cream);
       font-size: 1.08rem;
+      font-weight: 850;
+      line-height: 1.45;
+    }
+
+    .principles-list span {
+      display: block;
+    }
+
+    .prompt-comparison {
+      display: grid;
+      gap: 24px;
+    }
+
+    .prompt-comparison-head {
+      display: grid;
+      gap: 6px;
+    }
+
+    .prompt-comparison-head h4 {
+      color: var(--cream);
+      font-family: var(--font-heading);
+      font-size: clamp(1.35rem, 3vw, 2rem);
+      line-height: 1.15;
+      letter-spacing: -.035em;
+    }
+
+    .prompt-image-grid,
+    .prompt-analysis-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 20px;
+      align-items: stretch;
+    }
+
+    .prompt-shot-card {
+      display: grid;
+      grid-template-rows: 1fr auto;
+      gap: 12px;
+      margin: 0;
+      padding: clamp(14px, 2.4vw, 20px);
+      border-radius: 24px;
+      background:
+        radial-gradient(circle at 16% 0%, rgba(217, 165, 165, .08), transparent 34%),
+        rgba(7, 9, 12, .28);
+      border: 1px solid rgba(217, 165, 165, .14);
+      box-shadow: 0 18px 50px rgba(0, 0, 0, .22);
+      overflow: hidden;
+      transition: transform .3s ease, border-color .3s ease, box-shadow .3s ease;
+    }
+
+    .prompt-shot-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(217, 165, 165, .30);
+      box-shadow: 0 28px 72px rgba(178, 34, 52, .16), 0 24px 70px rgba(0, 0, 0, .28);
+    }
+
+    .prompt-image-frame {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 260px;
+      border-radius: 18px;
+      background: rgba(15, 17, 21, .82);
+      border: 1px solid rgba(245, 235, 221, .08);
+      overflow: hidden;
+    }
+
+    .prompt-image-frame img {
+      display: block;
+      width: min(100%, 460px);
+      height: 260px;
+      object-fit: contain;
+      border-radius: 14px;
+      transition: transform .35s ease;
+    }
+
+    .prompt-shot-card:hover img {
+      transform: scale(1.035);
+    }
+
+    .prompt-shot-card figcaption {
+      color: var(--cream);
+      font-weight: 900;
+      text-align: center;
+      letter-spacing: .01em;
+    }
+
+    .prompt-analysis-card {
+      padding: clamp(18px, 2.7vw, 24px);
+      border-radius: 22px;
+      background: rgba(255, 255, 255, .035);
+      border: 1px solid rgba(217, 165, 165, .12);
+      box-shadow: inset 0 0 0 1px rgba(245, 235, 221, .025);
+    }
+
+    .prompt-analysis-card h5 {
+      margin-bottom: 12px;
+      color: var(--rose-gold);
+      font-family: var(--font-heading);
+      font-size: 1.08rem;
+      letter-spacing: -.015em;
+    }
+
+    .prompt-analysis-card p {
+      color: var(--text-soft);
+      line-height: 1.82;
+      text-align: justify;
     }
 
     .detail-footer {
@@ -1113,6 +1609,28 @@
       .summary-hero { padding: 70px 20px 58px; }
       .detail-body { padding: 58px 20px 84px; }
       .detail-section { padding: 22px; }
+      .result-case-grid {
+        grid-template-columns: 1fr;
+      }
+      .prompt-image-grid,
+      .prompt-analysis-grid,
+      .evidence-grid {
+        grid-template-columns: 1fr;
+      }
+      .prompt-image-frame {
+        min-height: 220px;
+      }
+      .prompt-image-frame img {
+        width: 100%;
+        height: auto;
+        max-height: 300px;
+      }
+      .evidence-frame { min-height: 220px; }
+      .evidence-frame img {
+        height: auto;
+        max-height: 300px;
+      }
+      .result-figure img { width: 100%; }
       .detail-footer .btn { width: 100%; }
     }
 
@@ -1136,7 +1654,7 @@
       box-shadow: var(--shadow), var(--glow), inset 0 1px 0 rgba(255,255,255,.045);
       -webkit-backdrop-filter: blur(18px);
       backdrop-filter: blur(18px);
-      overflow: hidden;
+      overflow: visible;
     }
 
     .intro-hero-grid::before {
@@ -1326,9 +1844,6 @@
 
     .personal-card {
       position: relative;
-      display: grid;
-      grid-template-columns: 46px 1fr;
-      gap: 28px;
       padding: clamp(24px, 4vw, 42px);
       border-radius: 28px;
       overflow: hidden;
@@ -1347,12 +1862,18 @@
     }
 
     .personal-timeline {
-      position: relative;
+      position: absolute;
+      left: clamp(18px, 2.4vw, 30px);
+      top: 34px;
+      bottom: 34px;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: space-around;
-      min-height: 190px;
+      width: 2px;
+      min-height: 0;
+      opacity: .18;
+      pointer-events: none;
     }
 
     .personal-timeline::before {
@@ -1384,13 +1905,19 @@
       z-index: 1;
     }
 
-    .personal-info-item {
+    .profile-info-column {
       display: grid;
-      grid-template-columns: 50px 1fr;
+      grid-auto-rows: 1fr;
+      gap: 18px;
+    }
+
+    .personal-info-item {
+      display: flex;
       gap: 14px;
       align-items: center;
-      min-height: 74px;
-      padding: 12px;
+      min-height: 88px;
+      height: 100%;
+      padding: 12px 16px;
       border-radius: 18px;
       background: rgba(217,165,165,.045);
       border: 1px solid rgba(217,165,165,.10);
@@ -1413,6 +1940,15 @@
       font-weight: 950;
       letter-spacing: .11em;
       text-transform: uppercase;
+    }
+
+    .personal-info-item .profile-icon {
+      flex: 0 0 50px;
+    }
+
+    .personal-info-item > span:last-child {
+      line-height: 1.72;
+      padding-bottom: 3px;
     }
 
     .goals-section .goal-grid {
@@ -2175,12 +2711,20 @@
       }
 
       .personal-card {
-        grid-template-columns: 28px 1fr;
-        gap: 16px;
+        padding: 22px 18px;
+      }
+
+      .personal-timeline {
+        display: none;
+      }
+
+      .profile-info-column {
+        gap: 18px;
       }
 
       .personal-info-item {
-        grid-template-columns: 44px 1fr;
+        min-height: 88px;
+        gap: 16px;
       }
 
       .portfolio-purpose-grid::before {
@@ -2379,7 +2923,6 @@
 
     <section class="intro-section personal-info-section">
       <div class="intro-section-head">
-        <span class="intro-kicker">Thông tin cá nhân</span>
         <h2>Thông tin cá nhân</h2>
       </div>
 
@@ -2390,25 +2933,33 @@
           <span></span>
         </div>
         <div class="personal-info-grid">
-          <div class="personal-info-item">
-            <span class="profile-icon">🧭</span>
-            <span><strong>Định hướng</strong>Fullstack Developer kết hợp DevOps</span>
+          <div class="profile-info-column">
+            <div class="personal-info-item">
+              <span class="profile-icon">👤</span>
+              <span><strong>Tên</strong>Trần Hải Đăng</span>
+            </div>
+            <div class="personal-info-item">
+              <span class="profile-icon">🏫</span>
+              <span><strong>Trường</strong>Đại Học Công Nghệ</span>
+            </div>
+            <div class="personal-info-item">
+              <span class="profile-icon">🎓</span>
+              <span><strong>Ngành</strong>Công nghệ thông tin</span>
+            </div>
           </div>
-          <div class="personal-info-item">
-            <span class="profile-icon">🎓</span>
-            <span><strong>Ngành</strong>Công nghệ thông tin</span>
-          </div>
-          <div class="personal-info-item">
-            <span class="profile-icon">🏫</span>
-            <span><strong>Trường</strong>Đại Học Công Nghệ</span>
-          </div>
-          <div class="personal-info-item">
-            <span class="profile-icon">💻</span>
-            <span><strong>Công nghệ</strong>Java · C++ · HTML/CSS · JavaScript · SQL</span>
-          </div>
-          <div class="personal-info-item">
-            <span class="profile-icon">⚡</span>
-            <span><strong>Tính cách</strong>Nhiệt huyết · Cầu tiến · Có trách nhiệm</span>
+          <div class="profile-info-column">
+            <div class="personal-info-item">
+              <span class="profile-icon">⚡</span>
+              <span><strong>Tính cách</strong>Nhiệt huyết · Cầu tiến · Có trách nhiệm</span>
+            </div>
+            <div class="personal-info-item">
+              <span class="profile-icon">🧭</span>
+              <span><strong>Định hướng</strong>Fullstack Developer kết hợp DevOps</span>
+            </div>
+            <div class="personal-info-item">
+              <span class="profile-icon">💻</span>
+              <span><strong>Công nghệ</strong>Java · C++ · HTML/CSS · JavaScript · SQL</span>
+            </div>
           </div>
         </div>
       </div>
@@ -2416,7 +2967,6 @@
 
     <section class="intro-section goals-section">
       <div class="intro-section-head">
-        <span class="intro-kicker">Định hướng</span>
         <h2>Mục Tiêu Học Tập & Sự Nghiệp</h2>
         <p class="intro-section-desc">Con đường tôi đang xây dựng: học chắc nền tảng, làm được sản phẩm hoàn chỉnh và từng bước tiến tới vai trò Fullstack Developer kết hợp DevOps.</p>
       </div>
@@ -2447,7 +2997,6 @@
 
     <section class="intro-section portfolio-purpose-section">
       <div class="intro-section-head">
-        <span class="intro-kicker">Portfolio</span>
         <h2>Mục tiêu của Portfolio</h2>
       </div>
 
@@ -2682,30 +3231,200 @@
   const details = {
     1: {
       chapter: 'Chương 1 · Máy tính và các thiết bị ngoại vi',
-      title: 'Quản lý Tệp tin và Thư mục',
-      objective: 'Rèn luyện kỹ năng tạo, đổi tên, sao chép, di chuyển, xóa tệp tin và thư mục một cách thành thạo trên hệ điều hành Windows.',
+      title: 'Thực hành Quản lý Tệp và Thư mục trong Windows',
+      objective: 'Thực hành mở File Explorer, tạo thư mục và tệp văn bản, đổi tên, sao chép, di chuyển, xóa, xóa vĩnh viễn và khôi phục tệp từ Recycle Bin trong Windows.',
+      contentType: 'ordered',
       content: [
-        'Mở File Explorer và truy cập các ổ đĩa (D:, E:) hoặc thư mục Documents.',
-        'Tạo cấu trúc thư mục có tổ chức: ThucHanh_TranHaiDang → TaiLieu.',
-        'Thực hành tạo, đổi tên tệp văn bản (.txt), sao chép (Ctrl+C/V), di chuyển (Ctrl+X/V) và xóa tệp.',
-        'Thiết kế cây thư mục Data → Cá nhân, Học tập → Chung, CV, Ki 1, Ki 2 để quản lý tài liệu khoa học.',
-        'Thực hành xóa vĩnh viễn (Shift+Delete) và khôi phục từ Thùng rác (Restore).'
+        '<strong>Mở File Explorer:</strong> Nhấn <strong>Windows + E</strong> hoặc nhấp biểu tượng <strong>File Explorer</strong> trên thanh tác vụ để mở cửa sổ quản lý tệp.',
+        '<strong>Truy cập ổ đĩa hoặc thư mục:</strong> Chọn <strong>This PC</strong>, mở ổ <strong>D:</strong> hoặc <strong>E:</strong>; nếu máy chỉ có ổ <strong>C:</strong> thì mở thư mục <strong>Documents</strong>.',
+        '<strong>Tạo thư mục mới:</strong> Nhấp chuột phải vào vùng trống, chọn <strong>New → Folder</strong>, đặt tên <strong>ThucHanh_HoTenSinhVien</strong> như <strong>ThucHanh_TranHaiDang</strong> và nhấn <strong>Enter</strong>.',
+        '<strong>Mở thư mục vừa tạo:</strong> Nhấp đúp vào thư mục <strong>ThucHanh_TranHaiDang</strong> để truy cập nội dung bên trong.',
+        '<strong>Tạo tệp văn bản:</strong> Trong thư mục thực hành, chọn <strong>New → Text Document</strong>, đặt tên tệp là <strong>GhiChu.txt</strong> và nhấn <strong>Enter</strong>.',
+        '<strong>Đổi tên tệp tin:</strong> Nhấp chuột phải vào <strong>GhiChu.txt</strong>, chọn <strong>Rename</strong>, đổi thành <strong>GhiChuQuanTrong.txt</strong> và nhấn <strong>Enter</strong>.',
+        '<strong>Tạo thư mục con:</strong> Trong <strong>ThucHanh_TranHaiDang</strong>, tạo thư mục mới tên <strong>TaiLieu</strong> bằng thao tác <strong>New → Folder</strong>.',
+        '<strong>Sao chép tệp tin:</strong> Copy <strong>GhiChuQuanTrong.txt</strong> bằng chuột phải hoặc <strong>Ctrl + C</strong>, mở <strong>TaiLieu</strong> và Paste bằng <strong>Ctrl + V</strong>; kết quả là có bản sao trong <strong>TaiLieu</strong> còn tệp gốc vẫn giữ nguyên.',
+        '<strong>Di chuyển tệp tin:</strong> Tạo <strong>DiChuyen.txt</strong>, dùng <strong>Cut</strong> hoặc <strong>Ctrl + X</strong>, mở <strong>TaiLieu</strong> rồi <strong>Paste</strong>; kết quả là tệp được chuyển sang thư mục mới và không còn ở vị trí ban đầu.',
+        '<strong>Xóa tệp tin:</strong> Trong <strong>TaiLieu</strong>, nhấp chuột phải vào <strong>GhiChuQuanTrong.txt</strong> và chọn <strong>Delete</strong>; tệp được chuyển vào <strong>Recycle Bin</strong>.',
+        '<strong>Xóa tệp vĩnh viễn:</strong> Chọn <strong>DiChuyen.txt</strong>, nhấn <strong>Shift + Delete</strong> và chọn <strong>Yes</strong>; tệp bị xóa vĩnh viễn và không lưu trong Thùng rác.',
+        '<strong>Khôi phục tệp từ Thùng rác:</strong> Mở <strong>Recycle Bin</strong>, tìm <strong>GhiChuQuanTrong.txt</strong>, nhấp chuột phải và chọn <strong>Restore</strong>; tệp được khôi phục về vị trí ban đầu trước khi xóa.'
       ],
-      skills: ['Thao tác hệ điều hành Windows', 'Tổ chức dữ liệu khoa học', 'Quản lý tệp tin và thư mục', 'Tư duy hệ thống hóa thông tin'],
-      eval: 'Hoàn thành tất cả 12 bước trong bài thực hành. Qua bài này, tôi nhận ra tầm quan trọng của việc tổ chức dữ liệu ngay từ đầu — cấu trúc thư mục rõ ràng giúp tiết kiệm thời gian tìm kiếm và tạo thói quen làm việc khoa học.',
+      result: `
+        <div class="result-highlight">
+          <span class="result-highlight-icon">✓</span>
+          <strong>Em đã thiết lập cấu trúc thư mục theo hướng phân loại rõ ràng, giúp việc lưu trữ, tìm kiếm và quản lý tài liệu hiệu quả hơn.</strong>
+        </div>
+
+        <div class="result-case-grid">
+          <figure class="result-figure">
+            <img src="assets/bai1-cau-truc-thu-muc.png" alt="Ảnh cấu trúc thư mục Data trong Documents D">
+            <figcaption>Minh chứng cấu trúc thư mục đã thiết lập</figcaption>
+          </figure>
+
+          <div class="result-folder-panel">
+            <span class="result-subtitle">Cấu trúc thư mục tối ưu</span>
+            <div class="folder-tree">
+              <div class="folder-tree-node tree-parent tree-root">
+                <div class="folder-tree-row">
+                  <span class="folder-icon">📁</span>
+                  <span class="folder-text">
+                    <strong>Data</strong>
+                    <span>Nơi lưu trữ chính</span>
+                  </span>
+                </div>
+                <div class="folder-tree-children">
+                  <div class="folder-tree-row">
+                    <span class="folder-icon">📁</span>
+                    <span class="folder-text">
+                      <strong>Cá nhân</strong>
+                      <span>Tài liệu cá nhân</span>
+                    </span>
+                  </div>
+                  <div class="folder-tree-node tree-parent">
+                    <div class="folder-tree-row">
+                      <span class="folder-icon">📁</span>
+                      <span class="folder-text">
+                        <strong>Học tập</strong>
+                        <span>Tài liệu học tập</span>
+                      </span>
+                    </div>
+                    <div class="folder-tree-children">
+                      <div class="folder-tree-row">
+                        <span class="folder-icon">📁</span>
+                        <span class="folder-text">
+                          <strong>Chung</strong>
+                          <span>Tài liệu dùng chung</span>
+                        </span>
+                      </div>
+                      <div class="folder-tree-row">
+                        <span class="folder-icon">📁</span>
+                        <span class="folder-text">
+                          <strong>CV</strong>
+                          <span>Hồ sơ cá nhân</span>
+                        </span>
+                      </div>
+                      <div class="folder-tree-row">
+                        <span class="folder-icon">📁</span>
+                        <span class="folder-text">
+                          <strong>Kì 1</strong>
+                          <span>Tài liệu học kỳ 1</span>
+                        </span>
+                      </div>
+                      <div class="folder-tree-row">
+                        <span class="folder-icon">📁</span>
+                        <span class="folder-text">
+                          <strong>Kì 2</strong>
+                          <span>Tài liệu học kỳ 2</span>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="result-checklist">
+          <span class="result-subtitle">Quy tắc đặt tên đã thiết lập</span>
+          <div class="check-row">
+            <span class="check-icon">✓</span>
+            <span>Đặt tên thư mục ngắn gọn, dễ hiểu và phản ánh đúng mục đích lưu trữ.</span>
+          </div>
+          <div class="check-row">
+            <span class="check-icon">✓</span>
+            <span>Các thư mục cùng cấp dùng cách viết thống nhất, không đặt tên trùng hoặc quá chung chung.</span>
+          </div>
+          <div class="check-row">
+            <span class="check-icon">✓</span>
+            <span>Tài liệu học tập đặt theo mẫu <span class="code-tag">MonHoc_ChuDe_NgayThang</span>, ví dụ: <span class="code-tag">TinHoc_QuanLyTep_2026-06-05.docx</span>.</span>
+          </div>
+          <div class="check-row">
+            <span class="check-icon">✓</span>
+            <span>Tài liệu theo phiên bản thêm hậu tố <span class="code-tag">_v1</span>, <span class="code-tag">_v2</span> hoặc <span class="code-tag">_Final</span> để tránh nhầm lẫn khi chỉnh sửa.</span>
+          </div>
+        </div>
+      `,
+      skills: ['Sử dụng File Explorer', 'Tạo và đổi tên tệp/thư mục', 'Sao chép và di chuyển dữ liệu', 'Xóa và khôi phục tệp từ Recycle Bin'],
+      eval: 'Hoàn thành đầy đủ 12 bước thực hành quản lý tệp và thư mục trong Windows. Qua bài này, tôi hiểu rõ hơn cách tổ chức dữ liệu, thao tác với tệp an toàn và phân biệt giữa xóa thông thường, xóa vĩnh viễn và khôi phục từ Thùng rác.',
       link: 'https://docs.google.com/document/d/1X5JOL_gP_ugyEsb59JhXLaTvcwYxoDVT/edit?usp=sharing&ouid=109151126640861672467&rtpof=true&sd=true'
     },
     2: {
       chapter: 'Chương 2 · Khai thác dữ liệu và thông tin',
       title: 'Tìm kiếm và Đánh giá Thông tin Học thuật',
       objective: 'Phát triển kỹ năng tìm kiếm và đánh giá thông tin học thuật từ các nguồn đáng tin cậy về chủ đề AI trong giáo dục đại học.',
+      contentType: 'ordered',
       content: [
-        'Xác định chủ đề nghiên cứu: Ứng dụng AI trong giáo dục đại học (2019–2025).',
-        'Tìm kiếm từ 4 nhóm nguồn: Google Scholar, Springer/Frontiers/Oxford Academic, sách chuyên khảo và arXiv.',
-        'Thu thập 10+ tài liệu tham khảo học thuật, bao gồm ít nhất 5 bài báo khoa học có chỉ số trích dẫn cao.',
-        'Đánh giá độ tin cậy theo tiêu chí: tác giả, cơ quan xuất bản, phương pháp nghiên cứu, trích dẫn, tính cập nhật.',
-        'Lập bảng tổng hợp 10 nguồn với thông tin: tác giả/cơ quan, năm, loại nguồn, mức tin cậy (1–5).'
+        '<strong>Chọn chủ đề liên quan đến ngành học:</strong> Em chọn chủ đề <strong>"Ứng dụng Trí tuệ nhân tạo (AI) trong giáo dục đại học"</strong> vì đây là lĩnh vực đang được quan tâm và có nhiều ứng dụng thực tiễn.',
+        '<strong>Thực hiện tìm kiếm thông tin từ các nguồn:</strong> Em sử dụng cơ sở dữ liệu học thuật như <strong>Google Scholar</strong>, tạp chí khoa học chuyên ngành, sách chuyên khảo và nguồn mở trên Internet để tìm kiếm tài liệu liên quan đến chủ đề nghiên cứu.',
+        '<strong>Thu thập ít nhất 10 tài liệu tham khảo liên quan đến chủ đề:</strong> Em thu thập 10 tài liệu gồm bài báo khoa học, sách chuyên khảo và báo cáo học thuật về ứng dụng AI trong giáo dục đại học.',
+        '<strong>Đánh giá độ tin cậy của mỗi nguồn thông tin:</strong> Em đánh giá các nguồn dựa trên tác giả, nhà xuất bản, phương pháp nghiên cứu, số lượng trích dẫn và tính cập nhật của tài liệu.',
+        '<strong>Tạo bảng tổng hợp các nguồn thông tin:</strong> Em lập bảng tổng hợp các nguồn tài liệu để thuận tiện cho việc so sánh và đánh giá.'
       ],
+      result: `
+        <div class="result-checklist">
+          <span class="result-subtitle">Các toán tử tìm kiếm nâng cao</span>
+          <div class="result-table-wrap">
+            <table class="result-table">
+              <thead>
+                <tr><th>Toán tử</th><th>Ví dụ sử dụng</th></tr>
+              </thead>
+              <tbody>
+                <tr><td><span class="code-tag">""</span></td><td><span class="code-tag">"Artificial Intelligence in Higher Education"</span></td></tr>
+                <tr><td><span class="code-tag">AND</span></td><td><span class="code-tag">AI AND Education</span></td></tr>
+                <tr><td><span class="code-tag">OR</span></td><td><span class="code-tag">AI OR Artificial Intelligence</span></td></tr>
+                <tr><td><span class="code-tag">site:</span></td><td><span class="code-tag">AI in education site:springer.com</span></td></tr>
+                <tr><td><span class="code-tag">filetype:</span></td><td><span class="code-tag">AI education filetype:pdf</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="result-checklist">
+          <span class="result-subtitle">Danh sách tài liệu thu thập được</span>
+          <div class="result-table-wrap">
+            <table class="result-table">
+              <thead>
+                <tr><th>STT</th><th>Tài liệu</th><th>Năm</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>1</td><td>AI in Educational Contexts</td><td>2025</td></tr>
+                <tr><td>2</td><td>AI in Higher Education</td><td>2023</td></tr>
+                <tr><td>3</td><td>Artificial Intelligence in Education</td><td>2022</td></tr>
+                <tr><td>4</td><td>Systematic Review of AI in Higher Education</td><td>2019</td></tr>
+                <tr><td>5</td><td>AI Learning Techniques</td><td>2025</td></tr>
+                <tr><td>6</td><td>Frontiers AI Systematic Review</td><td>2024</td></tr>
+                <tr><td>7</td><td>AI in STEM Education</td><td>2024</td></tr>
+                <tr><td>8</td><td>Unpacking AI in Education</td><td>2022</td></tr>
+                <tr><td>9</td><td>AGI in Education</td><td>2023</td></tr>
+                <tr><td>10</td><td>Academic Database Comparison</td><td>2020</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="result-checklist">
+          <span class="result-subtitle">Bảng đánh giá nguồn tin</span>
+          <div class="result-table-wrap">
+            <table class="result-table">
+              <thead>
+                <tr><th>Tài liệu</th><th>Nguồn xuất bản</th><th>Độ tin cậy</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>AI in Educational Contexts</td><td>Springer</td><td>★★★★★</td></tr>
+                <tr><td>AI in Higher Education</td><td>Springer</td><td>★★★★★</td></tr>
+                <tr><td>Artificial Intelligence in Education</td><td>Springer</td><td>★★★★☆</td></tr>
+                <tr><td>Systematic Review of AI</td><td>SpringerOpen</td><td>★★★★★</td></tr>
+                <tr><td>AI Learning Techniques</td><td>Springer</td><td>★★★★☆</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="result-note">
+          <span class="result-subtitle">Nhận xét</span>
+          <p>Kết quả tìm kiếm cho thấy có nhiều tài liệu học thuật chất lượng về ứng dụng AI trong giáo dục đại học. Các nguồn từ Springer, Oxford và Frontiers có độ tin cậy cao do được phản biện khoa học và có số lượng trích dẫn lớn. Các nguồn mở như arXiv có giá trị tham khảo nhưng cần được đối chiếu với các nguồn học thuật chính thống trước khi sử dụng.</p>
+        </div>
+      `,
       skills: ['Tìm kiếm học thuật (Google Scholar, Springer)', 'Đánh giá độ tin cậy nguồn thông tin', 'Trích dẫn tài liệu tham khảo', 'Tư duy phê phán với thông tin'],
       eval: 'Thu thập được 10 nguồn chất lượng cao, ưu tiên bài báo có chỉ số trích dẫn và xuất bản trên tạp chí có phản biện. Bài học lớn nhất: không phải tài liệu nào cũng đáng tin — cần đọc kỹ tác giả, cơ quan và phương pháp nghiên cứu.',
       link: 'https://docs.google.com/document/d/1wyOT5ReGQalM6X9GGmxYWlC1vS7BA4IK/edit?usp=sharing&ouid=109151126640861672467&rtpof=true&sd=true'
@@ -2713,59 +3432,205 @@
     3: {
       chapter: 'Chương 3 · Tổng quan về Trí tuệ nhân tạo',
       title: 'Viết Prompt Hiệu quả cho Các Tác vụ Học tập',
-      objective: 'Xây dựng và thử nghiệm các prompt ở 3 cấp độ cho 3 tác vụ học tập khác nhau, phân tích điểm mạnh và cải thiện chất lượng đầu ra AI.',
+      objective: 'Xây dựng 3 phiên bản prompt cho 3 tác vụ học tập phổ biến, thử nghiệm với ChatGPT và rút ra nguyên tắc viết prompt hiệu quả.',
+      contentType: 'ordered',
       content: [
-        '3 tác vụ được chọn: Tóm tắt tài liệu AI, Giải thích khái niệm Machine Learning, Tạo câu hỏi ôn tập Java.',
-        'Mỗi tác vụ viết 3 phiên bản prompt: cơ bản (ngắn gọn) → cải tiến (có cấu trúc) → nâng cao (role prompting + few-shot).',
-        'Thử nghiệm thực tế với ChatGPT và so sánh kết quả 3 phiên bản.',
-        'Phân tích: Prompt nâng cao hiệu quả nhất nhờ ngữ cảnh vai trò, định dạng đầu ra rõ ràng và ví dụ minh họa.',
-        'Tổng hợp 5 nguyên tắc viết prompt hiệu quả: rõ ràng–cụ thể–có mục tiêu, thêm ngữ cảnh vai trò, giới hạn đầu ra, cho ví dụ mẫu, thử nghiệm–điều chỉnh.'
+        '<strong>Chọn 3 tác vụ học tập phổ biến</strong><ul><li>Tóm tắt tài liệu về Trí tuệ nhân tạo (AI)</li><li>Giải thích khái niệm Machine Learning</li><li>Tạo bộ câu hỏi ôn tập về Java</li></ul>',
+        '<strong>Viết 3 phiên bản prompt</strong><ul><li>Prompt cơ bản</li><li>Prompt cải tiến</li><li>Prompt nâng cao (Role Prompting, Chain-of-Thought, Few-shot Prompting)</li></ul>',
+        '<strong>Thử nghiệm và so sánh kết quả</strong><ul><li>Prompt cơ bản: Kết quả đúng nhưng còn ngắn gọn, thiếu cấu trúc.</li><li>Prompt cải tiến: Nội dung rõ ràng hơn, có bố cục và dễ theo dõi.</li><li>Prompt nâng cao: Kết quả chi tiết, logic, phù hợp với mục tiêu học tập và người học.</li></ul>',
+        '<strong>Lý do prompt nâng cao hiệu quả hơn</strong><ul><li>Xác định rõ vai trò của AI.</li><li>Có hướng dẫn và cấu trúc cụ thể.</li><li>Có ví dụ minh họa và ngữ cảnh phù hợp.</li><li>Đầu ra rõ ràng, dễ sử dụng.</li></ul>',
+        '<strong>Nguyên tắc viết prompt hiệu quả</strong><ul><li>Nêu rõ mục tiêu.</li><li>Cung cấp ngữ cảnh phù hợp.</li><li>Chia yêu cầu thành các phần cụ thể.</li><li>Đưa ví dụ khi cần.</li><li>Quy định định dạng đầu ra.</li><li>Thử nghiệm và điều chỉnh prompt.</li></ul>'
       ],
+      result: `
+        <div class="prompt-comparison">
+          <div class="prompt-comparison-head">
+            <span class="result-subtitle">So sánh Prompt</span>
+            <h4>Prompt cơ bản và Prompt nâng cao</h4>
+          </div>
+
+          <div class="prompt-image-grid">
+            <figure class="prompt-shot-card">
+              <div class="prompt-image-frame">
+                <img src="assets/bai3-prompt-co-ban.png" alt="Ảnh minh họa Prompt cơ bản">
+              </div>
+              <figcaption>Prompt cơ bản</figcaption>
+            </figure>
+
+            <figure class="prompt-shot-card">
+              <div class="prompt-image-frame">
+                <img src="assets/bai3-prompt-nang-cao.png" alt="Ảnh minh họa Prompt nâng cao">
+              </div>
+              <figcaption>Prompt nâng cao</figcaption>
+            </figure>
+          </div>
+
+          <div class="prompt-analysis-grid">
+            <div class="prompt-analysis-card">
+              <h5>Ảnh 1 – Prompt cơ bản</h5>
+              <p>Prompt cơ bản chỉ yêu cầu giải thích khái niệm Machine Learning nên AI đưa ra câu trả lời ngắn gọn và đúng nội dung cơ bản. Tuy nhiên, kết quả còn khá đơn giản, ít ví dụ minh họa và chưa có cấu trúc rõ ràng, khiến người mới học khó hình dung sâu về khái niệm này.</p>
+            </div>
+
+            <div class="prompt-analysis-card">
+              <h5>Ảnh 2 – Prompt nâng cao</h5>
+              <p>Prompt nâng cao đã bổ sung vai trò “giảng viên Công nghệ thông tin” và yêu cầu trình bày theo từng bước cụ thể. Nhờ đó, AI tạo ra câu trả lời chi tiết, có ví dụ thực tế, giải thích trực quan và phù hợp với sinh viên năm nhất. Nội dung mạch lạc, dễ hiểu hơn và hỗ trợ người học tiếp thu kiến thức hiệu quả hơn so với prompt cơ bản.</p>
+            </div>
+          </div>
+        </div>
+      `,
       skills: ['Prompt Engineering (3 cấp độ)', 'Role prompting & Chain-of-thought', 'Đánh giá & so sánh đầu ra AI', 'Tư duy có hệ thống với AI'],
       eval: 'Prompt nâng cao vượt trội hơn hẳn nhờ kết hợp ngữ cảnh cụ thể và ví dụ mẫu. Tôi nhận ra rằng viết prompt tốt là một kỹ năng cần luyện tập — không phải cứ hỏi dài là ra kết quả tốt, mà cần hỏi đúng cách.',
-      link: 'https://docs.google.com/document/d/1wyOT5ReGQalM6X9GGmxYWlC1vS7BA4IK/edit?usp=sharing&ouid=109151126640861672467&rtpof=true&sd=true'
+      link: 'https://docs.google.com/document/d/14NkDlaaL6u-dT6ayhn4ksRdXWBkGry21/edit?usp=sharing&ouid=109151126640861672467&rtpof=true&sd=true'
     },
     4: {
       chapter: 'Chương 4 · Giao tiếp và hợp tác trong môi trường số',
       title: 'Sử dụng Công cụ Hợp tác Trực tuyến cho Dự án Nhóm',
-      objective: 'Thành thạo các công cụ hợp tác trực tuyến để quản lý dự án nhóm — thực hiện video tiểu phẩm về AI trong lập trình.',
+      objective: 'Sử dụng Trello, Google Docs, Google Drive và Messenger để phối hợp thực hiện video tiểu phẩm ngắn về ứng dụng AI trong Công nghệ số và Công nghệ thông tin trong 1 tuần.',
+      contentType: 'ordered',
       content: [
-        'Dự án nhóm: Video tiểu phẩm về "AI hỗ trợ lập trình viên trong sinh code, gỡ lỗi và tối ưu hiệu suất".',
-        'Sử dụng Trello: Tạo bảng Kanban 3 cột (Việc cần làm – Đang làm – Xong), gắn thẻ thành viên và deadline.',
-        'Sử dụng Google Docs: Soạn thảo kịch bản cộng tác, bình luận và chỉnh sửa đồng thời.',
-        'Sử dụng Google Drive: Lưu trữ tài liệu, hình ảnh, nguồn tham khảo và video thô của cả nhóm.',
-        'Vai trò cá nhân: Thiết kế nội dung, quay video, chỉnh sửa video và cập nhật tiến độ trên Trello.'
+        '<strong>Lựa chọn dự án:</strong> Nhóm em lựa chọn thực hiện một video tiểu phẩm ngắn về ứng dụng của Trí tuệ nhân tạo (AI) trong lĩnh vực Công nghệ số và Công nghệ thông tin trong thời gian 1 tuần.',
+        '<strong>Lựa chọn công cụ hợp tác trực tuyến:</strong> Nhóm sử dụng các công cụ: <ul><li><strong>Trello:</strong> quản lý và theo dõi tiến độ công việc.</li><li><strong>Google Docs:</strong> soạn thảo và chỉnh sửa nội dung chung.</li><li><strong>Google Drive:</strong> lưu trữ, chia sẻ tài liệu.</li><li><strong>Messenger:</strong> trao đổi và thảo luận giữa các thành viên.</li></ul>',
+        '<strong>Thiết lập không gian làm việc chung:</strong> Nhóm tạo bảng Trello để phân công nhiệm vụ, thư mục Google Drive để lưu trữ tài liệu và nhóm Messenger để trao đổi thông tin trong suốt quá trình thực hiện dự án.',
+        '<strong>Thực hiện dự án:</strong> Trong 1 tuần, nhóm sử dụng các công cụ trên để phân công công việc, xây dựng kịch bản, quay và chỉnh sửa video, trao đổi ý kiến, theo dõi tiến độ và chia sẻ tài liệu giữa các thành viên.'
       ],
-      skills: ['Quản lý dự án với Trello (Kanban)', 'Cộng tác tài liệu Google Docs', 'Lưu trữ và chia sẻ Google Drive', 'Giao tiếp và phối hợp nhóm'],
+      result: `
+        <div class="result-note">
+          <p>Nhóm em sử dụng Trello để phân công và theo dõi tiến độ công việc, Google Docs để cùng xây dựng kịch bản, Google Drive để lưu trữ và chia sẻ tài liệu, còn Messenger được dùng để trao đổi và thống nhất các nội dung trong quá trình thực hiện dự án.</p>
+          <p>Sự kết hợp của bốn công cụ giúp nhóm phối hợp hiệu quả, cập nhật công việc nhanh chóng, quản lý tài liệu tập trung và hoàn thành dự án đúng thời hạn.</p>
+        </div>
+
+        <div class="evidence-grid">
+          <figure class="evidence-card">
+            <div class="evidence-frame">
+              <img src="assets/bai4-trello.png" alt="Minh chứng sử dụng Trello để quản lý tiến độ dự án">
+            </div>
+            <figcaption>Trello – Phân công và theo dõi tiến độ</figcaption>
+          </figure>
+
+          <figure class="evidence-card">
+            <div class="evidence-frame">
+              <img src="assets/bai4-google-docs.png" alt="Minh chứng sử dụng Google Docs để xây dựng kịch bản">
+            </div>
+            <figcaption>Google Docs – Xây dựng kịch bản chung</figcaption>
+          </figure>
+
+          <figure class="evidence-card">
+            <div class="evidence-frame">
+              <img src="assets/bai4-google-drive.png" alt="Minh chứng sử dụng Google Drive để lưu trữ và chia sẻ tài liệu">
+            </div>
+            <figcaption>Google Drive – Lưu trữ và chia sẻ tài liệu</figcaption>
+          </figure>
+
+          <figure class="evidence-card">
+            <div class="evidence-frame">
+              <img src="assets/bai4-messenger.png" alt="Minh chứng sử dụng Messenger để trao đổi nhóm">
+            </div>
+            <figcaption>Messenger – Trao đổi và thống nhất nội dung</figcaption>
+          </figure>
+        </div>
+      `,
+      skills: ['Quản lý tiến độ với Trello', 'Cộng tác nội dung trên Google Docs', 'Lưu trữ và chia sẻ Google Drive', 'Trao đổi nhóm qua Messenger'],
       eval: 'Lần đầu dùng Kanban, tôi gặp khó khăn trong phân chia công việc nhưng sau khi xem hướng dẫn và trao đổi nhóm đã hoạt động hiệu quả. Trello giúp cả nhóm minh bạch tiến độ và không ai bị bỏ sót nhiệm vụ.',
-      link: 'https://docs.google.com/document/d/1wyOT5ReGQalM6X9GGmxYWlC1vS7BA4IK/edit?usp=sharing&ouid=109151126640861672467&rtpof=true&sd=true'
+      link: 'https://docs.google.com/document/d/1D0yufeJcksJ9-bPViVVfICIpDI-S4UOe/edit?usp=sharing&ouid=109151126640861672467&rtpof=true&sd=true'
     },
     5: {
       chapter: 'Chương 5 · Sáng tạo nội dung số',
       title: 'Ứng dụng AI Tạo sinh trong Sáng tạo Nội dung',
       objective: 'Thành thạo việc sử dụng các công cụ AI tạo sinh để hỗ trợ quá trình sáng tạo nội dung số — bài viết blog và infographic.',
+      contentType: 'ordered',
       content: [
-        'Dự án: Blog + infographic chủ đề "5 dấu hiệu stress ở sinh viên và cách tự chăm sóc tinh thần mỗi ngày".',
-        'ChatGPT: Lên ý tưởng và viết bài blog theo tone giọng thân thiện cho sinh viên.',
-        'DALL-E 3: Tạo hình ảnh minh họa infographic "5 dấu hiệu stress", "3 cách ngủ ngon", "Pomodoro 25–5".',
-        'Canva AI: Chỉnh bố cục, điều chỉnh màu pastel, cân chữ/icon để làm cho infographic chuyên nghiệp hơn.',
-        'Quy trình: ChatGPT (nội dung) → DALL-E 3 (hình minh họa) → Canva (thiết kế cuối) → chỉnh sửa thủ công.'
+        '<strong>Chọn dự án sáng tạo nội dung:</strong> Em chọn dự án viết blog kết hợp infographic với chủ đề <strong>“5 dấu hiệu stress ở sinh viên và cách tự chăm sóc tinh thần mỗi ngày”</strong>.',
+        '<strong>Sử dụng công cụ AI:</strong><ul><li><strong>ChatGPT:</strong> lên ý tưởng và viết nội dung.</li><li><strong>DALL-E 3:</strong> tạo hình ảnh minh họa.</li><li><strong>Canva AI:</strong> chỉnh sửa và hoàn thiện thiết kế.</li></ul>',
+        '<strong>Quá trình sử dụng AI:</strong><ul><li>Tạo nội dung bằng ChatGPT.</li><li>Tạo infographic bằng DALL-E 3.</li><li>Chỉnh sửa bố cục, màu sắc và lỗi chữ bằng Canva AI.</li><li>Kết hợp các sản phẩm để hoàn thiện nội dung.</li></ul>',
+        '<strong>Hoàn thiện sản phẩm:</strong> Sản phẩm được thực hiện theo quy trình: <strong>ChatGPT → DALL-E 3 → Canva AI</strong>. Em tiếp tục chỉnh sửa nội dung và thiết kế để phù hợp với đối tượng sinh viên.',
+        '<strong>Vai trò của AI:</strong><ul><li>AI giúp tiết kiệm thời gian và hỗ trợ sáng tạo hiệu quả.</li><li>Nội dung và hình ảnh vẫn cần được kiểm tra, chỉnh sửa.</li><li>Cần sử dụng AI minh bạch và tránh phụ thuộc quá mức vào công cụ.</li></ul>'
       ],
+      result: `
+        <div class="result-note">
+          <span class="result-subtitle">Thành phẩm</span>
+          <p>Hai hình ảnh dưới đây là sản phẩm minh họa được tạo và hoàn thiện trong quá trình kết hợp ChatGPT, DALL-E 3 và Canva AI.</p>
+        </div>
+
+        <div class="evidence-grid">
+          <figure class="evidence-card">
+            <div class="evidence-frame">
+              <img src="assets/bai5-thanh-pham-1.png" alt="Thành phẩm hình minh họa Sweet Dreams">
+            </div>
+            <figcaption>Thành phẩm 1 – Sweet Dreams</figcaption>
+          </figure>
+
+          <figure class="evidence-card">
+            <div class="evidence-frame">
+              <img src="assets/bai5-thanh-pham-2.png" alt="Thành phẩm infographic Giấc Ngủ Ngon">
+            </div>
+            <figcaption>Thành phẩm 2 – Giấc Ngủ Ngon</figcaption>
+          </figure>
+        </div>
+      `,
       skills: ['Multi-tool AI workflow', 'Prompt for image generation', 'Đánh giá & tích hợp đầu ra AI', 'Thiết kế nội dung số sáng tạo'],
       eval: 'AI tiết kiệm thời gian rất nhiều nhưng cần can thiệp thủ công đáng kể — DALL-E 3 hay lỗi chữ tiếng Việt, ChatGPT đôi khi viết chung chung. Bài học: AI là trợ lý sáng tạo, không phải người thay thế sáng tạo.',
-      link: 'https://docs.google.com/document/d/1wyOT5ReGQalM6X9GGmxYWlC1vS7BA4IK/edit?usp=sharing&ouid=109151126640861672467&rtpof=true&sd=true'
+      link: 'https://docs.google.com/document/d/1Bg6KVxQeoGWCx_dl8VDm8EvRnmFsR2K9/edit?usp=sharing&ouid=109151126640861672467&rtpof=true&sd=true'
     },
     6: {
       chapter: 'Chương 6 · Đạo đức và trách nhiệm AI',
       title: 'Sử dụng AI Có Trách nhiệm trong Học tập & Nghiên cứu',
-      objective: 'Nghiên cứu chính sách nhà trường về AI, xây dựng nguyên tắc cá nhân và thực hành sử dụng AI trung thực, minh bạch trong học thuật.',
+      objective: 'Tìm hiểu chính sách sử dụng AI trong học thuật, thực hành viết bài luận và xây dựng nguyên tắc cá nhân để sử dụng AI minh bạch, an toàn và có trách nhiệm.',
+      contentType: 'ordered',
       content: [
-        'Phân tích 3 nguyên tắc cốt lõi trong chính sách AI của trường: Minh bạch & trách nhiệm giải trình, Bảo mật & quyền sở hữu trí tuệ, Quy định xử lý vi phạm.',
-        'Nghiên cứu các mô hình ngôn ngữ lớn (LLM) như ChatGPT, Claude và tác động đến học thuật.',
-        'Phân tích ranh giới giữa "hỗ trợ AI hợp lệ" và "gian lận học thuật".',
-        'Xây dựng bộ nguyên tắc cá nhân gồm 7 điểm áp dụng vào mọi sản phẩm học tập.',
-        'Thực hành khai báo và trích dẫn AI trong bài làm theo chuẩn học thuật.'
+        '<strong>Nghiên cứu chính sách về AI:</strong> Em tìm hiểu chính sách của Đại học Quốc gia Hà Nội (VNU) về sử dụng AI trong học tập và nghiên cứu. AI được xem là công cụ hỗ trợ, nhưng người học phải đảm bảo tính trung thực học thuật, tránh đạo văn và chịu trách nhiệm với sản phẩm của mình.',
+        '<strong>Thực hiện nhiệm vụ với AI:</strong> Em chọn viết bài luận về <strong>“Sử dụng AI có trách nhiệm trong học tập và nghiên cứu”</strong>. AI được sử dụng để gợi ý dàn ý, cung cấp ý tưởng và hỗ trợ phân tích nội dung. Sau đó, em kiểm tra, chỉnh sửa và bổ sung quan điểm cá nhân trước khi hoàn thiện bài viết.',
+        '<strong>Các vấn đề đạo đức:</strong><ul><li>AI hỗ trợ học tập nhưng không được thay thế hoàn toàn tư duy cá nhân.</li><li>Cần tôn trọng quyền sở hữu trí tuệ và trích dẫn nguồn phù hợp.</li><li>Tránh lạm dụng AI gây ảnh hưởng đến kỹ năng học tập và tư duy phản biện.</li></ul>',
+        '<strong>Bộ nguyên tắc cá nhân:</strong><ul><li>AI chỉ là công cụ hỗ trợ.</li><li>Luôn minh bạch khi sử dụng AI.</li><li>Kiểm tra và chỉnh sửa đầu ra của AI.</li><li>Chịu trách nhiệm với nội dung học thuật của mình.</li><li>Tôn trọng bản quyền và quyền riêng tư.</li></ul>',
+        '<strong>Thiết kế infographic:</strong> Em xây dựng infographic với chủ đề <strong>“Sử dụng AI có trách nhiệm trong học thuật”</strong>, minh họa các nguyên tắc sử dụng AI an toàn, minh bạch và hiệu quả trong học tập.'
       ],
+      result: `
+        <div class="result-note">
+          <span class="result-subtitle">Thành phẩm</span>
+          <p>Infographic dưới đây minh họa các nguyên tắc sử dụng AI có trách nhiệm trong học thuật, nhấn mạnh việc kiểm chứng thông tin, minh bạch khi dùng AI và duy trì vai trò chủ động của người học.</p>
+        </div>
+
+        <div class="evidence-grid evidence-grid-single">
+          <figure class="evidence-card">
+            <div class="evidence-frame">
+              <img src="assets/bai6-infographic-ai-co-trach-nhiem.png" alt="Infographic sử dụng AI có trách nhiệm trong học thuật">
+            </div>
+            <figcaption>Infographic – Sử dụng AI có trách nhiệm trong học thuật</figcaption>
+          </figure>
+        </div>
+
+        <div class="principles-block">
+          <h4 class="principles-title">Bộ nguyên tắc cá nhân về sử dụng AI có trách nhiệm trong học tập:</h4>
+          <ol class="principles-list">
+            <li>
+              <strong>AI chỉ là công cụ hỗ trợ, không thay thế tư duy cá nhân</strong>
+              <span>Em chỉ dùng AI để gợi ý, tham khảo hoặc hỗ trợ diễn đạt, còn nội dung chính vẫn phải do em tự hiểu và tự làm.</span>
+            </li>
+            <li>
+              <strong>Luôn minh bạch khi có sử dụng AI</strong>
+              <span>Nếu bài làm có sự hỗ trợ từ AI, em sẽ ghi rõ mình đã dùng AI ở phần nào và dùng để làm gì, nhằm đảm bảo trung thực học thuật.</span>
+            </li>
+            <li>
+              <strong>Chỉ sử dụng AI trong phạm vi được phép theo quy định</strong>
+              <span>Em sẽ tuân thủ các quy định/định hướng của nhà trường và giảng viên, không dùng AI trong những phần bị cấm (như làm bài thay trong kiểm tra, thi cử…).</span>
+            </li>
+            <li>
+              <strong>Chịu trách nhiệm hoàn toàn về nội dung nộp</strong>
+              <span>Dù AI có hỗ trợ, em vẫn là người chịu trách nhiệm về độ chính xác và chất lượng của bài làm; AI không thể thay em chịu trách nhiệm học thuật.</span>
+            </li>
+            <li>
+              <strong>Kiểm tra – chỉnh sửa – cá nhân hóa mọi đầu ra của AI</strong>
+              <span>Em không sao chép nguyên văn câu trả lời của AI, mà sẽ kiểm chứng, chỉnh sửa lại theo cách hiểu của mình và bổ sung lập luận để bài có tính cá nhân.</span>
+            </li>
+            <li>
+              <strong>Tôn trọng quyền sở hữu trí tuệ và trích dẫn đầy đủ</strong>
+              <span>Khi dùng nội dung có liên quan đến tài liệu/học thuật, em sẽ trích dẫn nguồn phù hợp và tránh đạo văn (kể cả đạo văn “không chủ ý” do AI tổng hợp).</span>
+            </li>
+            <li>
+              <strong>Không lạm dụng AI để tránh phụ thuộc</strong>
+              <span>Em coi AI là công cụ giúp học hiệu quả hơn, nhưng vẫn phải duy trì khả năng tự học, tư duy phản biện và rèn kỹ năng viết, phân tích độc lập.</span>
+            </li>
+          </ol>
+        </div>
+      `,
       skills: ['Đạo đức AI (AI Ethics)', 'Academic Integrity', 'Phân tích chính sách', 'Xây dựng nguyên tắc cá nhân'],
       eval: 'Đây là bài tập tôi thấy có giá trị nhất về mặt nhận thức. Ranh giới giữa "dùng AI để học" và "để AI học thay" thực sự rất mỏng và đòi hỏi ý thức tự giác cao. Portfolio này là sản phẩm tôi tự hào vì tôi hiểu từng nội dung trong đó.',
       link: 'https://docs.google.com/document/d/1J6JopEme-nsicj9vYK6CjPFQPq2F6idX/edit?usp=sharing&ouid=109151126640861672467&rtpof=true&sd=true'
@@ -2773,10 +3638,10 @@
   };
 
   const projectTags = {
-    1: ['Windows', 'File Explorer', 'Tổ chức dữ liệu'],
+    1: ['File Explorer', 'Copy/Cut/Paste', 'Recycle Bin'],
     2: ['Research', 'Google Scholar', 'Trích dẫn'],
-    3: ['Prompting', 'AI Tools', 'Đánh giá đầu ra'],
-    4: ['Trello', 'Google Docs', 'Teamwork'],
+    3: ['Role Prompting', 'Few-shot', 'So sánh prompt'],
+    4: ['Trello', 'Google Drive', 'Messenger'],
     5: ['ChatGPT', 'DALL-E 3', 'Canva AI'],
     6: ['AI Ethics', 'Academic Integrity', 'Minh bạch']
   };
@@ -2814,21 +3679,27 @@
     let lastTime = performance.now();
 
     function particleTarget() {
-      if (reduceMotion) return 50;
+      if (reduceMotion) return 70;
       const area = window.innerWidth * window.innerHeight;
-      return Math.max(80, Math.min(120, Math.round(area / 18000)));
+      const minParticles = window.innerWidth < 768 ? 95 : 135;
+      const maxParticles = window.innerWidth < 768 ? 150 : 240;
+      return Math.max(minParticles, Math.min(maxParticles, Math.round(area / 11500)));
     }
 
     function createParticle(x = Math.random() * width, y = Math.random() * height, burst = false) {
       const depth = 0.48 + Math.random() * 0.72;
-      const speed = (burst ? 0.32 : 0.035) + Math.random() * (burst ? 0.46 : 0.11);
+      const speed = (burst ? 0.32 : 0.075) + Math.random() * (burst ? 0.46 : 0.13);
       const angle = Math.random() * Math.PI * 2;
+      const vx = Math.cos(angle) * speed * depth;
+      const vy = Math.sin(angle) * speed * depth;
 
       return {
         x,
         y,
-        vx: Math.cos(angle) * speed * depth,
-        vy: Math.sin(angle) * speed * depth,
+        vx,
+        vy,
+        baseVx: vx,
+        baseVy: vy,
         radius: (0.85 + Math.random() * 1.8) * depth,
         depth,
         alpha: 0.22 + Math.random() * 0.54,
@@ -2853,24 +3724,40 @@
 
     function updateParticles(step) {
       const pullRadius = Math.min(240, Math.max(150, width * 0.16));
+      const boostRadius = Math.min(340, Math.max(190, width * 0.22));
+      const restore = Math.min(0.06, 0.018 * step);
 
       for (const p of particles) {
+        let speedBoost = mouse.active ? 1.18 : 1;
+
+        p.vx += (p.baseVx - p.vx) * restore;
+        p.vy += (p.baseVy - p.vy) * restore;
+
         if (!reduceMotion && mouse.active) {
           const dx = mouse.x - p.x;
           const dy = mouse.y - p.y;
           const distance = Math.hypot(dx, dy) || 1;
 
+          if (distance < boostRadius) {
+            speedBoost += (1 - distance / boostRadius) * 1.45;
+          }
+
           if (distance < pullRadius) {
-            const force = (1 - distance / pullRadius) * 0.018 * p.depth;
+            const force = (1 - distance / pullRadius) * 0.022 * p.depth;
             p.vx += (dx / distance) * force * step;
             p.vy += (dy / distance) * force * step;
           }
         }
 
-        p.x += p.vx * step;
-        p.y += p.vy * step;
-        p.vx *= 0.994;
-        p.vy *= 0.994;
+        const speed = Math.hypot(p.vx, p.vy);
+        const maxSpeed = (mouse.active ? 0.92 : 0.30) * p.depth;
+        if (speed > maxSpeed) {
+          p.vx = (p.vx / speed) * maxSpeed;
+          p.vy = (p.vy / speed) * maxSpeed;
+        }
+
+        p.x += p.vx * step * speedBoost;
+        p.y += p.vy * step * speedBoost;
 
         if (p.x < -20) p.x = width + 20;
         if (p.x > width + 20) p.x = -20;
@@ -2933,7 +3820,8 @@
         const jitterY = (Math.random() - 0.5) * 34;
         particles.push(createParticle(event.clientX + jitterX, event.clientY + jitterY, true));
       }
-      if (particles.length > 150) particles.splice(0, particles.length - 150);
+      const maxParticles = particleTarget() + 48;
+      if (particles.length > maxParticles) particles.splice(0, particles.length - maxParticles);
     }
 
     window.addEventListener('resize', resizeCanvas, { passive: true });
@@ -3071,18 +3959,19 @@
       </div>
       <div class="detail-section detail-article-card">
         <h3>📋 Nội dung đã thực hiện</h3>
-        <ul>${d.content.map(c => `<li>${c}</li>`).join('')}</ul>
+        <${d.contentType === 'ordered' ? 'ol' : 'ul'}>${d.content.map(c => `<li>${c}</li>`).join('')}</${d.contentType === 'ordered' ? 'ol' : 'ul'}>
       </div>
+      ${d.result ? `
+      <div class="detail-section detail-article-card">
+        <h3>Kết quả</h3>
+        <div class="result-box">${d.result}</div>
+      </div>
+      ` : ''}
       <div class="detail-section detail-article-card">
         <h3>💡 Kỹ năng rèn luyện được</h3>
         <div style="display:flex; flex-wrap:wrap; gap:8px;">
           ${d.skills.map(s => `<span class="tag" style="font-size:.85rem; padding:6px 14px;">${s}</span>`).join('')}
         </div>
-      </div>
-      <div class="detail-section detail-article-card">
-        <h3>🪞 Tự đánh giá & Bài học rút ra</h3>
-        <div class="eval-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span style="opacity:.3">★</span></div>
-        <div class="info-box wine-box">${d.eval}</div>
       </div>
       <div class="detail-footer">
         <a href="${d.link}" target="_blank" class="btn">Xem thêm tài liệu ↗</a>
