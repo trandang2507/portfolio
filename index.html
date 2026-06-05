@@ -307,39 +307,6 @@
       z-index: 1;
     }
 
-    .intro-pill,
-    .section-tag,
-    .intro-kicker {
-      display: inline-flex;
-      align-items: center;
-      color: var(--rose-gold);
-      font-size: .78rem;
-      font-weight: 900;
-      letter-spacing: .18em;
-      text-transform: uppercase;
-    }
-
-    .intro-pill {
-      gap: 10px;
-      padding: 10px 18px;
-      margin-bottom: 30px;
-      border-radius: 999px;
-      background: rgba(217, 165, 165, .07);
-      border: 1px solid rgba(217, 165, 165, .20);
-      box-shadow: inset 0 1px 0 rgba(255,255,255,.04), 0 0 34px rgba(122,31,43,.18);
-    }
-
-    .intro-pill::before,
-    .section-tag::before,
-    .intro-kicker::before {
-      content: '';
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: var(--rose-gold);
-      box-shadow: 0 0 18px rgba(217, 165, 165, .65);
-    }
-
     .intro-title {
       max-width: 720px;
       margin-bottom: 30px;
@@ -548,7 +515,7 @@
     .section {
       max-width: 1220px;
       margin: 0 auto;
-      padding: 104px 28px;
+      padding: 64px 28px;
       position: relative;
     }
 
@@ -565,7 +532,8 @@
 
     .intro-section-head,
     .section-header {
-      margin-bottom: 46px;
+      margin-top: 0;
+      margin-bottom: 32px;
     }
 
     .section-header { text-align: center; }
@@ -573,7 +541,8 @@
     .intro-kicker,
     .section-tag {
       gap: 12px;
-      margin-bottom: 18px;
+      margin-top: 0;
+      margin-bottom: 14px;
     }
 
     .intro-section h2,
@@ -1457,7 +1426,7 @@
     }
 
     .portfolio-purpose-section {
-      padding-top: 72px;
+      padding-top: 64px;
     }
 
     .portfolio-purpose-grid {
@@ -1521,6 +1490,34 @@
       color: var(--text-soft);
       font-size: 1rem;
       line-height: 1.82;
+    }
+
+    .digital-skill-strip {
+      margin-bottom: 28px;
+      padding: 24px;
+      border-radius: 28px;
+      background:
+        radial-gradient(circle at 12% 24%, rgba(178,34,52,.14), transparent 32%),
+        linear-gradient(145deg, rgba(21,25,34,.78), rgba(21,25,34,.50));
+      border: 1px solid rgba(217,165,165,.14);
+      box-shadow: 0 18px 46px rgba(0,0,0,.18), inset 0 1px 0 rgba(255,255,255,.04);
+      -webkit-backdrop-filter: blur(16px);
+      backdrop-filter: blur(16px);
+    }
+
+    .digital-skill-grid {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .digital-skill-grid .skill-chip {
+      min-height: 62px;
+      justify-content: center;
+      border-radius: 18px;
+      font-size: clamp(.9rem, 1.2vw, 1.05rem);
+      text-align: center;
+      white-space: nowrap;
     }
 
     .skill-dashboard {
@@ -1704,6 +1701,383 @@
       font-size: .95rem;
     }
 
+    .summary-section {
+      display: grid;
+      gap: 0;
+    }
+
+    .summary-hero .section-title {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .summary-hero-title-icon {
+      width: clamp(54px, 7vw, 82px);
+      height: clamp(54px, 7vw, 82px);
+      display: inline-grid;
+      place-items: center;
+      flex: 0 0 auto;
+      border-radius: 24px;
+      background: rgba(107,15,26,.34);
+      border: 1px solid rgba(217,165,165,.20);
+      box-shadow: 0 0 38px rgba(178,34,52,.22);
+      font-size: clamp(1.4rem, 2.7vw, 2rem);
+    }
+
+    .summary-card,
+    .summary-bento-card {
+      background:
+        radial-gradient(circle at 92% 10%, rgba(178,34,52,.16), transparent 34%),
+        linear-gradient(145deg, rgba(21,25,34,.86), rgba(21,25,34,.58));
+      border: 1px solid rgba(217,165,165,.15);
+      box-shadow: 0 18px 46px rgba(0,0,0,.20), inset 0 1px 0 rgba(255,255,255,.04);
+      -webkit-backdrop-filter: blur(16px);
+      backdrop-filter: blur(16px);
+      transition: transform .4s ease, border-color .4s ease, box-shadow .4s ease;
+    }
+
+    .summary-reflection {
+      position: relative;
+      max-width: 1100px;
+      width: 100%;
+      margin: 0;
+      padding: clamp(28px, 3vw, 34px) clamp(28px, 4vw, 42px);
+      border-radius: 28px;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 92% 10%, rgba(178,34,52,.16), transparent 34%),
+        linear-gradient(145deg, rgba(21,25,34,.86), rgba(21,25,34,.58));
+      border: 1px solid rgba(217,165,165,.15);
+      box-shadow: 0 18px 46px rgba(0,0,0,.20), inset 0 1px 0 rgba(255,255,255,.04);
+      -webkit-backdrop-filter: blur(16px);
+      backdrop-filter: blur(16px);
+      text-align: left;
+    }
+
+    .summary-reflection::before {
+      content: '';
+      position: absolute;
+      inset: auto -12% -48% 38%;
+      height: 220px;
+      background: radial-gradient(circle, rgba(178,34,52,.18), transparent 64%);
+      filter: blur(6px);
+      pointer-events: none;
+    }
+
+    .summary-reflection p {
+      position: relative;
+      z-index: 1;
+      max-width: 980px;
+      margin: 0;
+      color: var(--text);
+      font-size: clamp(19px, 1.6vw, 22px);
+      line-height: 1.75;
+      letter-spacing: .005em;
+      text-align: left;
+    }
+
+    .summary-block {
+      display: grid;
+      gap: 22px;
+    }
+
+    .summary-section > .summary-block {
+      margin-bottom: clamp(56px, 6vw, 76px);
+    }
+
+    .summary-section > .summary-reflection-block {
+      max-width: none;
+      width: 100%;
+      margin: 0 0 70px;
+    }
+
+    .summary-block-head h3 {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin: 0;
+      color: var(--cream);
+      font-family: var(--font-heading);
+      font-size: clamp(1.7rem, 3.4vw, 2.75rem);
+      line-height: 1;
+      letter-spacing: -.05em;
+    }
+
+    .summary-heading-icon {
+      display: inline-grid;
+      place-items: center;
+      flex: 0 0 auto;
+      margin: 0;
+      background: rgba(107,15,26,.34);
+      border: 1px solid rgba(217,165,165,.18);
+      box-shadow: 0 0 28px rgba(178,34,52,.18);
+      line-height: 1;
+      transform: none;
+    }
+
+    .summary-heading-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 18px;
+      font-size: 1.25rem;
+    }
+
+    .summary-card-grid {
+      display: grid;
+      gap: 18px;
+    }
+
+    .summary-learning-grid {
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+    }
+
+    .summary-card {
+      min-height: 310px;
+      display: flex;
+      flex-direction: column;
+      padding: 24px;
+      border-radius: 24px;
+      overflow: hidden;
+    }
+
+    .summary-card:hover,
+    .summary-bento-card:hover {
+      transform: translateY(-10px) scale(1.02);
+      border-color: rgba(217,165,165,.32);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .summary-card-icon {
+      width: 54px;
+      height: 54px;
+      display: grid;
+      place-items: center;
+      margin-bottom: 20px;
+      border-radius: 17px;
+      background: rgba(107,15,26,.34);
+      border: 1px solid rgba(217,165,165,.18);
+      box-shadow: 0 0 28px rgba(178,34,52,.18);
+      font-size: 1.35rem;
+    }
+
+    .summary-card h4,
+    .summary-roadmap-item h4,
+    .summary-bento-card h4 {
+      margin-bottom: 12px;
+      color: var(--cream);
+      font-family: var(--font-heading);
+      font-size: 1.08rem;
+      line-height: 1.28;
+      letter-spacing: -.025em;
+    }
+
+    .summary-card p,
+    .summary-roadmap-item p,
+    .summary-bento-card p {
+      color: var(--text-soft);
+      font-size: .94rem;
+      line-height: 1.74;
+    }
+
+    .summary-layout-stack {
+      display: grid;
+      gap: clamp(40px, 5vw, 58px);
+      margin-bottom: clamp(56px, 6vw, 74px);
+    }
+
+    .summary-roadmap {
+      position: relative;
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 24px;
+      padding: 22px 0 8px;
+    }
+
+    .summary-roadmap::before {
+      content: '';
+      position: absolute;
+      left: 7%;
+      right: 7%;
+      top: 54px;
+      height: 2px;
+      background: linear-gradient(90deg, rgba(217,165,165,.12), rgba(217,165,165,.40), rgba(178,34,52,.24));
+      box-shadow: 0 0 24px rgba(178,34,52,.18);
+    }
+
+    .summary-roadmap-item {
+      position: relative;
+      min-height: 270px;
+      padding-top: 96px;
+      text-align: left;
+    }
+
+    .summary-roadmap-item::before {
+      content: '';
+      position: absolute;
+      left: 31px;
+      top: 70px;
+      width: 1px;
+      height: 42px;
+      background: linear-gradient(to bottom, rgba(217,165,165,.40), transparent);
+    }
+
+    .summary-roadmap-marker {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 64px;
+      height: 64px;
+      display: grid;
+      place-items: center;
+      border-radius: 999px;
+      background: radial-gradient(circle at 35% 25%, rgba(217,165,165,.24), rgba(107,15,26,.46));
+      border: 1px solid rgba(217,165,165,.28);
+      color: var(--cream);
+      font: 950 .82rem/1 var(--font-heading);
+      letter-spacing: .12em;
+      box-shadow: 0 0 32px rgba(178,34,52,.25), inset 0 1px 0 rgba(255,255,255,.08);
+      transition: transform .4s ease, border-color .4s ease, box-shadow .4s ease;
+    }
+
+    .summary-roadmap-item:hover .summary-roadmap-marker {
+      transform: translateY(-8px) scale(1.06);
+      border-color: rgba(217,165,165,.42);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .summary-roadmap-item h4 {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+
+    .summary-roadmap-item h4 span {
+      flex: 0 0 auto;
+      line-height: 1;
+    }
+
+    .summary-bento-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+      align-items: stretch;
+    }
+
+    .summary-bento-card {
+      position: relative;
+      min-height: 250px;
+      display: flex;
+      flex-direction: column;
+      padding: 22px;
+      border-radius: 24px;
+      overflow: hidden;
+    }
+
+    .summary-bento-card::before {
+      content: '';
+      position: absolute;
+      right: -72px;
+      top: -82px;
+      width: 190px;
+      height: 190px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(178,34,52,.20), transparent 68%);
+      pointer-events: none;
+    }
+
+    .summary-bento-card-large {
+      min-height: 250px;
+      padding: clamp(26px, 4vw, 38px);
+      border-radius: 30px;
+      border-color: rgba(217,165,165,.24);
+      box-shadow: var(--shadow), inset 0 1px 0 rgba(255,255,255,.055);
+    }
+
+    .summary-bento-icon {
+      width: 50px;
+      height: 50px;
+      display: grid;
+      place-items: center;
+      margin-bottom: 18px;
+      border-radius: 17px;
+      background: rgba(107,15,26,.34);
+      border: 1px solid rgba(217,165,165,.18);
+      box-shadow: 0 0 28px rgba(178,34,52,.18);
+      font-size: 1.22rem;
+    }
+
+    .summary-bento-card-large .summary-bento-icon {
+      width: 66px;
+      height: 66px;
+      border-radius: 21px;
+      font-size: 1.55rem;
+      box-shadow: 0 0 42px rgba(178,34,52,.24);
+    }
+
+    .summary-bento-card-large h4 {
+      max-width: 560px;
+      font-size: clamp(1.22rem, 1.8vw, 1.65rem);
+      line-height: 1.16;
+      letter-spacing: -.045em;
+    }
+
+    .summary-bento-card-large p {
+      max-width: 640px;
+      font-size: .98rem;
+    }
+
+    .summary-quote {
+      position: relative;
+      padding: 60px 24px;
+      text-align: center;
+    }
+
+    .summary-quote::before,
+    .summary-quote::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(217,165,165,.28), transparent);
+      box-shadow: 0 0 20px rgba(178,34,52,.14);
+    }
+
+    .summary-quote::before {
+      top: 0;
+    }
+
+    .summary-quote::after {
+      bottom: 0;
+    }
+
+    .summary-final-quote {
+      position: relative;
+      max-width: 760px;
+      margin: 0 auto;
+      color: var(--cream);
+      font-family: var(--font-heading);
+      font-size: clamp(20px, 2vw, 34px);
+      font-weight: 800;
+      line-height: 1.38;
+      letter-spacing: -.04em;
+      text-align: center;
+      text-wrap: balance;
+    }
+
+    .summary-quote .quote-mark {
+      display: block;
+      position: static;
+      margin: 0 auto 8px;
+      color: rgba(217,165,165,.15);
+      font-size: 48px;
+      line-height: .7;
+      pointer-events: none;
+    }
+
     @media (max-width: 1100px) {
       .intro-hero-grid {
         grid-template-columns: minmax(0, 1fr) minmax(300px, .88fr);
@@ -1723,6 +2097,42 @@
       .summary-content-grid {
         grid-template-columns: 1fr;
       }
+
+      .digital-skill-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .summary-learning-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .summary-roadmap {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        padding-top: 10px;
+      }
+
+      .summary-roadmap::before {
+        display: none;
+      }
+
+      .summary-roadmap-item {
+        min-height: auto;
+        padding: 0 0 0 84px;
+      }
+
+      .summary-roadmap-item::before {
+        left: 31px;
+        top: 66px;
+        height: calc(100% + 18px);
+      }
+
+      .summary-roadmap-item:last-child::before {
+        display: none;
+      }
+
+      .summary-bento-card-large {
+        min-height: 280px;
+      }
     }
 
     @media (max-width: 768px) {
@@ -1735,8 +2145,11 @@
       .goals-section .goal-grid,
       .portfolio-purpose-grid,
       .skill-dashboard,
+      .digital-skill-grid,
       .skill-tools-panel .skill-chip-grid,
       .skill-mini-grid,
+      .summary-learning-grid,
+      .summary-bento-grid,
       .projects-grid {
         grid-template-columns: 1fr;
       }
@@ -1772,6 +2185,143 @@
 
       .portfolio-purpose-grid::before {
         display: none;
+      }
+
+      .digital-skill-strip {
+        padding: 18px;
+      }
+
+      .digital-skill-grid .skill-chip {
+        justify-content: flex-start;
+        white-space: normal;
+      }
+
+      .summary-section {
+        gap: 0;
+      }
+
+      .summary-reflection {
+        padding: 28px 22px;
+        border-radius: 24px;
+      }
+
+      .summary-section > .summary-reflection-block {
+        margin-bottom: 56px;
+      }
+
+      .summary-block-head h3 {
+        align-items: center;
+        gap: 16px;
+      }
+
+      .summary-heading-icon {
+        width: 48px;
+        height: 48px;
+        border-radius: 16px;
+        font-size: 1.08rem;
+      }
+
+      .summary-reflection p {
+        max-width: 100%;
+        font-size: clamp(18px, 4.4vw, 21px);
+        line-height: 1.75;
+      }
+
+      .summary-roadmap {
+        gap: 24px;
+      }
+
+      .summary-roadmap-item {
+        padding-left: 78px;
+      }
+
+      .summary-card,
+      .summary-bento-card {
+        min-height: auto;
+      }
+
+      .summary-bento-card-large {
+        grid-column: auto;
+        grid-row: auto;
+        border-radius: 24px;
+        padding: 24px;
+      }
+
+      .summary-quote {
+        padding: 60px 18px;
+      }
+
+      .summary-quote .quote-mark {
+        font-size: 42px;
+      }
+    }
+
+    /* Spacing normalization: keep hero large, prevent oversized blank gaps before section headings. */
+    .intro-section,
+    .section {
+      min-height: auto;
+      padding-top: 64px;
+      padding-bottom: 64px;
+    }
+
+    .intro-hero + .intro-section {
+      padding-top: 48px;
+    }
+
+    .intro-section-head,
+    .section-header {
+      margin-top: 0;
+      margin-bottom: 32px;
+    }
+
+    .intro-kicker,
+    .section-tag,
+    .section-kicker,
+    .section-label {
+      margin-top: 0;
+      margin-bottom: 14px;
+    }
+
+    .personal-info-section,
+    .goals-section,
+    .portfolio-purpose-section,
+    .skills-dashboard-section,
+    .projects-section,
+    .summary-section {
+      min-height: auto;
+      padding-top: 64px;
+      padding-bottom: 64px;
+    }
+
+    .section-bg,
+    .bg-decor,
+    .particles-bg,
+    .divider-space {
+      height: 80px;
+      min-height: 0;
+      pointer-events: none;
+    }
+
+    @media (max-width: 768px) {
+      .intro-section,
+      .section,
+      .personal-info-section,
+      .goals-section,
+      .portfolio-purpose-section,
+      .skills-dashboard-section,
+      .projects-section,
+      .summary-section {
+        padding-top: 52px;
+        padding-bottom: 52px;
+      }
+
+      .intro-hero + .intro-section {
+        padding-top: 40px;
+      }
+
+      .intro-section-head,
+      .section-header {
+        margin-bottom: 26px;
       }
     }
 
@@ -1810,7 +2360,6 @@
     <section class="intro-hero">
       <div class="intro-hero-grid">
         <div>
-          <span class="intro-pill">Fullstack Developer · DevOps</span>
           <h1 class="intro-title">Xin chào,<br>tôi là <span>Trần Hải Đăng</span></h1>
           <p class="intro-lead">
             Sinh viên ngành <strong>Công nghệ thông tin</strong>, đang xây dựng nền tảng kỹ thuật vững chắc để trở thành <strong>Fullstack Developer kết hợp DevOps</strong> — có thể phát triển ứng dụng từ giao diện, backend, cơ sở dữ liệu đến triển khai và vận hành.
@@ -1925,6 +2474,17 @@
         <p class="intro-section-desc">Kết hợp giữa lập trình, tư duy hệ thống, công cụ học tập số và cách sử dụng AI có trách nhiệm trong quá trình học tập.</p>
       </div>
 
+      <div class="digital-skill-strip">
+        <div class="skill-group-title">Kỹ năng số & mềm</div>
+        <div class="digital-skill-grid">
+          <div class="skill-chip">🤖 AI Prompt Engineering</div>
+          <div class="skill-chip">🔍 Tìm kiếm học thuật</div>
+          <div class="skill-chip">📁 Quản lý tập tin</div>
+          <div class="skill-chip">🤝 Làm việc nhóm online</div>
+          <div class="skill-chip">⚖️ Đạo đức số</div>
+        </div>
+      </div>
+
       <div class="skill-dashboard">
         <div class="skill-panel skill-progress-panel">
           <div class="skill-group-title">Ngôn ngữ & Công nghệ</div>
@@ -2004,87 +2564,116 @@
 ══════════════════════════════════════ -->
 <div class="page" id="page-summary">
   <div class="summary-hero">
-    <span class="section-tag">Reflection</span>
-    <h2 class="section-title" style="margin-top:10px;">Tổng kết Hành trình</h2>
-    <p class="section-desc">Nhìn lại những gì đã học được, rút ra bài học và định hướng bước tiếp theo.</p>
+    <h2 class="section-title" style="margin-top:10px;"><span class="summary-hero-title-icon" aria-hidden="true">🧾</span>Tổng kết hành trình học tập</h2>
   </div>
-  <div class="section">
-    <div class="stats-row">
-      <div class="stat-item"><div class="stat-num">6</div><div class="stat-label">Bài tập hoàn thành</div></div>
-      <div class="stat-item"><div class="stat-num">5+</div><div class="stat-label">Công cụ AI đã dùng</div></div>
-      <div class="stat-item"><div class="stat-num">7</div><div class="stat-label">Nguyên tắc AI cá nhân</div></div>
-      <div class="stat-item"><div class="stat-num">1</div><div class="stat-label">Hành trình phát triển</div></div>
+
+  <div class="section summary-section">
+    <div class="summary-block summary-reflection-block">
+      <div class="summary-block-head">
+        <h3 id="summary-reflection-title"><span class="summary-heading-icon" aria-hidden="true">💬</span>Cảm nhận sau hành trình</h3>
+      </div>
+      <section class="summary-reflection" aria-labelledby="summary-reflection-title">
+        <p>Trong quá trình xây dựng Portfolio, tôi có cơ hội nhìn lại toàn bộ các sản phẩm học tập đã thực hiện và nhận thấy sự tiến bộ của bản thân qua từng nhiệm vụ. Thông qua việc ứng dụng AI, tìm kiếm và đánh giá thông tin, làm việc nhóm trực tuyến cũng như tổ chức nội dung học tập, tôi không chỉ nâng cao kiến thức chuyên môn mà còn rèn luyện được tư duy phản biện, kỹ năng tự học và khả năng quản lý công việc hiệu quả hơn.</p>
+      </section>
     </div>
 
-    <div class="summary-content-grid">
-      <div class="detail-section summary-quote-card">
-        <h3>Cảm nhận & Phản tư</h3>
-        <div class="quote-block">
-          "Trong quá trình xây dựng portfolio, tôi có cơ hội nhìn lại các sản phẩm học tập của bản thân, hiểu rõ hơn cách sử dụng AI một cách hợp lý và có trách nhiệm. Tôi học được cách đặt prompt rõ ràng, biết đánh giá đầu ra của AI, chỉnh sửa nội dung cho phù hợp và trình bày sản phẩm học tập một cách có hệ thống."
-        </div>
-        <p style="font-size:.95rem; color:var(--text-soft); line-height:1.75;">
-          Điều tôi tâm đắc nhất là portfolio không chỉ là nơi lưu trữ bài tập mà còn giúp tôi thấy được <strong>sự tiến bộ của bản thân</strong> qua từng nhiệm vụ. Thử thách lớn nhất là sắp xếp nội dung sao cho khoa học, đẹp mắt và thể hiện được cá tính cá nhân.
-        </p>
+    <div class="summary-block">
+      <div class="summary-block-head">
+        <h3><span class="summary-heading-icon" aria-hidden="true">🧩</span>Kiến thức và kỹ năng đạt được</h3>
       </div>
-
-      <div class="summary-highlight-grid">
-        <div class="detail-section summary-highlight-card">
-          <h3>Điều học được</h3>
-          <p>Tôi học được cách đặt prompt rõ ràng, biết đánh giá đầu ra của AI, chỉnh sửa nội dung cho phù hợp và trình bày sản phẩm học tập một cách có hệ thống.</p>
-        </div>
-        <div class="detail-section summary-highlight-card">
-          <h3>Thử thách</h3>
-          <p>Thử thách lớn nhất là sắp xếp nội dung sao cho khoa học, đẹp mắt và thể hiện được cá tính cá nhân.</p>
-        </div>
-        <div class="detail-section summary-highlight-card">
-          <h3>Định hướng tương lai</h3>
-          <p>Định hướng rõ hơn con đường trở thành <strong>Fullstack Developer kết hợp DevOps</strong> trong tương lai.</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="detail-section">
-      <h3>Hành trình Học tập</h3>
-      <div class="timeline">
-        <div class="tl-item">
-          <div class="tl-dot"></div>
-          <h4>Kỹ năng cơ bản số</h4>
-          <p>Nắm vững thao tác quản lý tệp tin, thư mục và tổ chức dữ liệu khoa học trên máy tính.</p>
-        </div>
-        <div class="tl-item">
-          <div class="tl-dot"></div>
-          <h4>Tư duy học thuật</h4>
-          <p>Phát triển khả năng tìm kiếm, đánh giá và trích dẫn thông tin từ các nguồn học thuật uy tín.</p>
-        </div>
-        <div class="tl-item">
-          <div class="tl-dot"></div>
-          <h4>Prompt Engineering</h4>
-          <p>Thành thạo viết prompt hiệu quả ở nhiều mức độ, ứng dụng role prompting và chain-of-thought.</p>
-        </div>
-        <div class="tl-item">
-          <div class="tl-dot"></div>
-          <h4>Làm việc nhóm số</h4>
-          <p>Ứng dụng thành thạo Trello, Google Docs, Google Drive trong quản lý dự án nhóm.</p>
-        </div>
-        <div class="tl-item">
-          <div class="tl-dot"></div>
-          <h4>Sáng tạo với AI</h4>
-          <p>Kết hợp đa công cụ AI để tạo nội dung có giá trị, từ văn bản đến hình ảnh và thiết kế.</p>
-        </div>
-        <div class="tl-item">
-          <div class="tl-dot"></div>
-          <h4>Đạo đức & Trách nhiệm AI</h4>
-          <p>Xây dựng bộ nguyên tắc cá nhân, nhận thức rõ ranh giới giữa hỗ trợ và gian lận học thuật.</p>
-        </div>
+      <div class="summary-card-grid summary-learning-grid">
+        <article class="summary-card">
+          <span class="summary-card-icon">✍️</span>
+          <h4>Viết Prompt hiệu quả</h4>
+          <p>Tôi học được cách xây dựng prompt có ngữ cảnh, mục tiêu và định dạng đầu ra rõ ràng để AI trả về kết quả chính xác và phù hợp với nhu cầu học tập.</p>
+        </article>
+        <article class="summary-card">
+          <span class="summary-card-icon">🧠</span>
+          <h4>Tư duy phản biện khi tiếp nhận thông tin</h4>
+          <p>Tôi rèn luyện khả năng đánh giá nguồn thông tin, kiểm chứng dữ liệu và đối chiếu nhiều nguồn khác nhau trước khi sử dụng.</p>
+        </article>
+        <article class="summary-card">
+          <span class="summary-card-icon">🤝</span>
+          <h4>Làm việc nhóm bằng công cụ số</h4>
+          <p>Thông qua Trello, Google Docs, Google Drive và Messenger, tôi nâng cao khả năng phối hợp, quản lý tiến độ và chia sẻ tài liệu hiệu quả.</p>
+        </article>
+        <article class="summary-card">
+          <span class="summary-card-icon">🎨</span>
+          <h4>Ứng dụng AI trong sáng tạo nội dung</h4>
+          <p>Tôi biết cách sử dụng AI để hỗ trợ xây dựng ý tưởng, tạo nội dung và tối ưu quy trình làm việc mà vẫn giữ được vai trò chủ động của con người.</p>
+        </article>
+        <article class="summary-card">
+          <span class="summary-card-icon">🗂️</span>
+          <h4>Trình bày và tổ chức Portfolio</h4>
+          <p>Quá trình xây dựng Portfolio giúp tôi rèn luyện khả năng hệ thống hóa kiến thức, sắp xếp nội dung khoa học và trình bày sản phẩm học tập theo hướng chuyên nghiệp.</p>
+        </article>
       </div>
     </div>
 
-    <div class="detail-section">
-      <h3>Định hướng Tương lai</h3>
-      <div class="info-box wine-box">
-        <p>Qua portfolio này, tôi rèn luyện thêm <strong>kỹ năng tự học, tư duy phản biện, thiết kế nội dung</strong> và định hướng rõ hơn con đường trở thành <strong>Fullstack Developer kết hợp DevOps</strong> trong tương lai — nơi tôi có thể xây dựng ứng dụng web hoàn chỉnh và tích hợp AI một cách có trách nhiệm vào quy trình phát triển phần mềm.</p>
+    <div class="summary-layout-stack">
+      <div class="summary-block">
+        <div class="summary-block-head">
+          <h3><span class="summary-heading-icon" aria-hidden="true">🧭</span>Điều tâm đắc</h3>
+        </div>
+        <div class="summary-roadmap">
+          <article class="summary-roadmap-item">
+            <span class="summary-roadmap-marker" aria-hidden="true">01</span>
+            <h4><span aria-hidden="true">🤖</span>AI là công cụ hỗ trợ, không phải công cụ thay thế</h4>
+            <p>Tôi nhận ra giá trị lớn nhất của AI nằm ở khả năng hỗ trợ con người học tập và làm việc hiệu quả hơn, thay vì thay thế hoàn toàn tư duy của con người.</p>
+          </article>
+          <article class="summary-roadmap-item">
+            <span class="summary-roadmap-marker" aria-hidden="true">02</span>
+            <h4><span aria-hidden="true">📈</span>Nhìn thấy sự tiến bộ của bản thân</h4>
+            <p>Khi tổng hợp các sản phẩm vào Portfolio, tôi có cơ hội nhìn lại toàn bộ quá trình học tập và nhận thấy sự phát triển của bản thân qua từng nhiệm vụ.</p>
+          </article>
+          <article class="summary-roadmap-item">
+            <span class="summary-roadmap-marker" aria-hidden="true">03</span>
+            <h4><span aria-hidden="true">🔗</span>Kết nối kiến thức thành một hệ thống</h4>
+            <p>Portfolio giúp tôi liên kết các chủ đề như Prompt Engineering, AI có trách nhiệm, tìm kiếm học thuật và làm việc nhóm thành một hành trình học tập thống nhất.</p>
+          </article>
+          <article class="summary-roadmap-item">
+            <span class="summary-roadmap-marker" aria-hidden="true">04</span>
+            <h4><span aria-hidden="true">🛡️</span>Học được cách sử dụng AI có trách nhiệm</h4>
+            <p>Thông qua các bài tập và quá trình xây dựng Portfolio, tôi hiểu rằng AI chỉ thực sự phát huy giá trị khi được sử dụng một cách minh bạch, có kiểm chứng và có sự tham gia của tư duy con người.</p>
+          </article>
+        </div>
+      </div>
+
+      <div class="summary-block">
+        <div class="summary-block-head">
+          <h3><span class="summary-heading-icon" aria-hidden="true">⚡</span>Những thách thức đã gặp</h3>
+        </div>
+        <div class="summary-bento-grid">
+          <article class="summary-bento-card summary-bento-card-large">
+            <span class="summary-bento-icon" aria-hidden="true">🗂️</span>
+            <h4>Tổ chức và sắp xếp nội dung</h4>
+            <p>Khó khăn lớn nhất là tổng hợp nhiều bài tập với nội dung khác nhau thành một Portfolio có cấu trúc rõ ràng, khoa học và dễ theo dõi.</p>
+          </article>
+          <article class="summary-bento-card">
+            <span class="summary-bento-icon" aria-hidden="true">🔎</span>
+            <h4>Kiểm chứng thông tin từ AI</h4>
+            <p>Một số thông tin do AI cung cấp chưa hoàn toàn chính xác hoặc thiếu nguồn tham khảo rõ ràng, vì vậy tôi phải dành thời gian kiểm tra và đối chiếu lại.</p>
+          </article>
+          <article class="summary-bento-card">
+            <span class="summary-bento-icon" aria-hidden="true">⚖️</span>
+            <h4>Cân bằng giữa hỗ trợ và phụ thuộc AI</h4>
+            <p>Trong quá trình học tập, tôi luôn cố gắng sử dụng AI như một trợ lý hỗ trợ thay vì sao chép trực tiếp kết quả do AI tạo ra.</p>
+          </article>
+          <article class="summary-bento-card">
+            <span class="summary-bento-icon" aria-hidden="true">🎛️</span>
+            <h4>Thiết kế Portfolio trực quan và chuyên nghiệp</h4>
+            <p>Việc xây dựng giao diện, bố cục và trải nghiệm người dùng đòi hỏi nhiều lần chỉnh sửa để vừa đảm bảo tính thẩm mỹ vừa thể hiện được nội dung một cách hiệu quả.</p>
+          </article>
+        </div>
       </div>
     </div>
+
+    <section class="summary-quote">
+      <blockquote class="summary-final-quote">
+        <span class="quote-mark">“</span>
+        Portfolio không chỉ là nơi lưu giữ những gì tôi đã làm, mà còn là minh chứng cho những gì tôi đã học được và hành trình tôi đang tiếp tục theo đuổi.
+      </blockquote>
+    </section>
   </div>
 </div>
 
@@ -2380,12 +2969,19 @@
     '.personal-info-item',
     '.skill-group',
     '.portfolio-purpose-card',
+    '.digital-skill-strip',
     '.skill-panel',
     '.skill-mini-card',
     '.goal-card',
     '.section-header',
     '.project-card',
     '.summary-hero',
+    '.summary-reflection',
+    '.summary-block-head',
+    '.summary-card',
+    '.summary-roadmap-item',
+    '.summary-bento-card',
+    '.summary-quote',
     '.stat-item',
     '.summary-highlight-card',
     '.detail-hero',
