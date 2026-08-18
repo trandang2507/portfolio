@@ -72,6 +72,9 @@ body {
     display: flex;
     margin: 0 auto;
 }
+.home-info {
+    width: 50%;
+}
 .home-subtitle{
     color: #9B7CFF;
     font-size: 24px;
@@ -113,6 +116,7 @@ body {
     line-height: 1.6;
 }
 .home-image{
+    width: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
