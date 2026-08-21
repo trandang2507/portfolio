@@ -18,8 +18,10 @@ nav {
 .navbar{
     width: 100%;
     height: 60px;
-    background-color: #080B10;
+    background: rgba(8, 11, 16, 0.7);
     border-bottom: 2px solid #1B1E26;
+    backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
 }
 .nav-container{
     align-items: center;
