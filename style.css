@@ -47,12 +47,32 @@ nav {
     padding-right: 32px;
 }
 .nav-link button{
+    position: relative;
     background: none;
     border: none;
     color: #E5E7EB;
 }
+.button-active{
+    font-weight: 700;
+    text-decoration: underline #a792eb;
+    text-underline-offset: 5px;
+}
 .nav-link button:hover{
-    color: #a792eb;
+    font-weight: 700;
+}
+.nav-link button::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: -3px;
+    width: 0;
+    height: 2px;
+    background: #a792eb;
+    transition: width 0.5s ease, left 0.5s ease;
+}
+.nav-link button:hover::after {
+    left: 0;
+    width: 100%;
 }
 .nav-cv{
     background: #7c5cff;
@@ -102,8 +122,7 @@ nav {
     font-size: 20px;
     gap: 10px;
 }
-.home-button a{
-    text-decoration: none;
+.home-button button{
     color:#E5E7EB;
 }
 .button1 {
@@ -112,6 +131,7 @@ nav {
     border-radius: 20px;
 }
 .button2 {
+    background: none;
     border: 1px solid #E5E7EB;
     border-radius: 20px;
     padding: 12px;
@@ -156,6 +176,7 @@ nav {
 
     color: #E5E7EB;
 }
+
 /*About*/
 .about {
     color: #F5F5F7;
