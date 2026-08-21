@@ -4,7 +4,7 @@ function showPage( id ){
     });
 }
 
-const sections = document.querySelectorAll(".page-sections");
+const sections = document.querySelectorAll(".page-section");
 const navButtons = document.querySelectorAll(".nav-link button");
 
 const observe = new IntersectionObserver((entries) => {
