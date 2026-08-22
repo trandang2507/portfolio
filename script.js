@@ -4,6 +4,13 @@ function showPage( id ){
     });
 }
 
+const hamburger = document.getElementById("hamburger");
+const navLink = document.querySelector(".nav-link ul");
+
+hamburger.addEventListener("click", () => {
+    navLink.classList.toggle("active");
+});
+
 const sections = document.querySelectorAll(".page-section");
 const navButtons = document.querySelectorAll(".nav-link button");
 
@@ -25,7 +32,6 @@ const observe = new IntersectionObserver((entries) => {
     });
 },{
     threshold: 0.5
-}
-);
+});
 
 sections.forEach(section => observe.observe(section));

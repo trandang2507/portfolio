@@ -1,27 +1,30 @@
 <!DOCTYPE html>
 <html lang="en-us">
-    <header>
+    <head>
         <title>HDang</title>
         <meta charset="UTF-8">
-        <meta name="viewport" content="width:device-width, initial-scale:1.0">
-        <link rel="icon" href="icon/favicon.ico">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="icon/favicon.png">
         <link rel="stylesheet" href="style.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <script src="script.js" defer></script>
-    </header>
+    </head>
     <body>
         <!--Navigation-->
         <nav class = "navbar">
             <div class = "nav-container">
                 <a href="#home" class="nav-logo">My Fortfolio</a>
-                    <ul class="nav-link">
-                    <li><button onclick="showPage('home')">Home</button></li>
-                    <li><button onclick="showPage('about')">About</button></li>
-                    <li><button onclick="showPage('skills')">Skills</button></li>
-                    <li><button onclick="showPage('project')">Project</button></li>
-                    <li><button onclick="showPage('contact')">Contact</button></li>
-                    <li><a href="image/Tran-Hai-Dang-CV.jpg" class="nav-cv">My CV</a></li>
-                </ul>
+                <div class="nav-link">
+                    <ul>
+                        <li><button onclick="showPage('home')">Home</button></li>
+                        <li><button onclick="showPage('about')">About</button></li>
+                        <li><button onclick="showPage('skills')">Skills</button></li>
+                        <li><button onclick="showPage('project')">Project</button></li>
+                        <li><button onclick="showPage('contact')">Contact</button></li>
+                        <li><a href="image/Tran-Hai-Dang-CV.jpg" class="nav-cv">My CV</a></li>
+                    </ul>
+                </div>
+                <button class="hamburger" id="hamburger">☰</button>
             </div>
         </nav>
         <!--Home-->
@@ -190,19 +193,21 @@
                             <i class="fa fa-solid fa-phone"></i>
                             <span>0971672507</span>
                         </a>
-                        <a href="https://github.com/trandang2507">
-                            <i class="fa fa-github" aria-hidden="true"></i>
-                        </a>
-                        <a href="#">
-                            <i class="fa fa-brands fa-linkedin"></i>
-                        </a>
-                        <a href="https://www.facebook.com/dangtran2507/">
-                            <i class="fa fa-brands fa-facebook"></i>
-                        </a>
+                        <div class = "footer-social">
+                            <a href="https://github.com/trandang2507">
+                                <i class="fa fa-github" aria-hidden="true"></i>
+                            </a>
+                            <a href="#">
+                                <i class="fa fa-brands fa-linkedin"></i>
+                            </a>
+                            <a href="https://www.facebook.com/dangtran2507/">
+                                <i class="fa fa-brands fa-facebook"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
                 <div class="footer-bottom">
-                    <p>© 2025 Trần Đăng. All rights reserved.</p>
+                    <p>© 2026 Trần Đăng. All rights reserved.</p>
                 </div>
             </div>
         </footer>
