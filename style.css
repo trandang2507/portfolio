@@ -44,14 +44,10 @@ nav {
 }
 .nav-link{
     display: flex;
-    padding-right: 32px;
-}
-.nav-link ul{
-    display: flex;
     gap: 15px;
     list-style: none;
     flex-wrap: wrap;
-    padding-right: inherit;
+    padding-right: 32px;
 }
 .nav-link button{
     position: relative;
@@ -433,7 +429,7 @@ nav {
         position: relative;
     }
 
-    .nav-link ul{
+    .nav-link {
         display: none;
         position: absolute;
         top: 60px;
@@ -457,8 +453,6 @@ nav {
     .nav-link.active {
         display: flex;
     }
-
-
     .nav-link button {
         font-size: 13px;
     }

@@ -5,7 +5,7 @@ function showPage( id ){
 }
 
 const hamburger = document.getElementById("hamburger");
-const navLink = document.querySelector(".nav-link ul");
+const navLink = document.querySelector(".nav-link");
 
 hamburger.addEventListener("click", () => {
     navLink.classList.toggle("active");
